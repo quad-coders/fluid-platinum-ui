@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modal — Fluid Platinum UI</title>
+  <link rel="stylesheet" href="../../index.css">
+</head>
+<body style="padding: 2rem;">
+
+  <h1 class="fp-ui-h2">Modal</h1>
+  <p class="fp-ui-text-lead">CSS-only via :target. Glass backdrop with blur. Optional JS addon for focus trap and Escape key.</p>
+
+  <hr class="fp-ui-divider">
+
+  <div style="margin-top: 1rem;">
+    <a href="#demo-modal" class="fp-ui-btn fp-ui-btn--primary">Open Modal</a>
+  </div>
+
+  <div class="fp-ui-modal" id="demo-modal">
+    <div class="fp-ui-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <a href="#!" class="fp-ui-modal__close" aria-label="Close">&times;</a>
+      <div class="fp-ui-modal__title" id="modal-title">Confirm Action</div>
+      <div class="fp-ui-modal__body">
+        <p>Are you sure you want to proceed? This will deploy the latest build to production.</p>
+      </div>
+      <div class="fp-ui-modal__footer">
+        <a href="#!" class="fp-ui-btn fp-ui-btn--ghost">Cancel</a>
+        <a href="#!" class="fp-ui-btn fp-ui-btn--primary">Deploy</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional: include modal.js for focus trapping, Escape key, scroll lock -->
+  <!-- <script src="modal.js"></script> -->
+
+  <!--
+    USAGE:
+    <a href="#my-modal" class="fp-ui-btn fp-ui-btn--primary">Open</a>
+    <div class="fp-ui-modal" id="my-modal">
+      <div class="fp-ui-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <a href="#!" class="fp-ui-modal__close" aria-label="Close">&times;</a>
+        <div class="fp-ui-modal__title" id="modal-title">Title</div>
+        <div class="fp-ui-modal__body"><p>Content</p></div>
+        <div class="fp-ui-modal__footer">
+          <a href="#!" class="fp-ui-btn fp-ui-btn--ghost">Cancel</a>
+          <a href="#!" class="fp-ui-btn fp-ui-btn--primary">Confirm</a>
+        </div>
+      </div>
+    </div>
+
+    CSS-only lacks focus trapping and Escape key. Include modal.js for full a11y.
+  -->
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avatar — Fluid Platinum UI</title>
+  <link rel="stylesheet" href="../../index.css">
+</head>
+<body style="padding: 2rem;">
+
+  <h1 class="fp-ui-h2">Avatar</h1>
+  <p class="fp-ui-text-lead">User avatar with initials or image. Supports sizes and overlapping groups.</p>
+
+  <hr class="fp-ui-divider">
+
+  <!-- Sizes -->
+  <h2 class="fp-ui-h4" style="margin-top: 1rem;">Sizes</h2>
+  <div class="fp-ui-row fp-ui-gap-4 fp-ui-items-center" style="margin-top: 1rem;">
+    <div class="fp-ui-avatar fp-ui-avatar--sm" aria-hidden="true">S</div>
+    <div class="fp-ui-avatar" aria-hidden="true">MD</div>
+    <div class="fp-ui-avatar fp-ui-avatar--lg" aria-hidden="true">LG</div>
+    <div class="fp-ui-avatar fp-ui-avatar--xl" aria-hidden="true">XL</div>
+  </div>
+
+  <!-- Group -->
+  <h2 class="fp-ui-h4" style="margin-top: 2rem;">Group (overlapping)</h2>
+  <div class="fp-ui-avatar-group" style="margin-top: 1rem;">
+    <div class="fp-ui-avatar" aria-hidden="true">A</div>
+    <div class="fp-ui-avatar" aria-hidden="true">B</div>
+    <div class="fp-ui-avatar" aria-hidden="true">C</div>
+    <div class="fp-ui-avatar" aria-hidden="true">+3</div>
+  </div>
+
+  <!--
+    USAGE:
+    <div class="fp-ui-avatar">AB</div>
+    <div class="fp-ui-avatar"><img src="photo.jpg" alt="User"></div>
+
+    SIZES: --sm (28px), default (40px), --lg (56px), --xl (80px)
+    GROUP: Wrap in .fp-ui-avatar-group for overlapping layout
+  -->
+
+</body>
+</html>

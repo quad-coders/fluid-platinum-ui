@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fluid Platinum UI — Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <style>
+    /* ========================================
+       PREVIEW LAYOUT (not part of the design system)
+       ======================================== */
+    .preview-container {
+      position: relative;
+      z-index: 1;
+      max-width: 940px;
+      margin: 0 auto;
+      padding: var(--fp-ui-spacing-12) var(--fp-ui-spacing-6);
+    }
+    .preview-section {
+      margin-bottom: var(--fp-ui-spacing-20);
+    }
+    .preview-section__title {
+      font-size: 0.65rem;
+      font-weight: var(--fp-ui-font-weight-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--fp-ui-color-accent-400);
+      margin-bottom: var(--fp-ui-spacing-8);
+      position: relative;
+      display: inline-block;
+    }
+    .preview-section__title::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, var(--fp-ui-color-accent-400), transparent);
+      opacity: 0.4;
+    }
+    [data-theme="light"] .preview-section__title { color: var(--fp-ui-color-accent-600); }
+    [data-theme="light"] .preview-section__title::after { background: linear-gradient(90deg, var(--fp-ui-color-accent-600), transparent); }
+
+    .preview-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--fp-ui-spacing-4);
+      margin-bottom: var(--fp-ui-spacing-6);
+    }
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--fp-ui-spacing-6);
+    }
+    .theme-toggle {
+      position: fixed;
+      top: var(--fp-ui-spacing-5);
+      right: var(--fp-ui-spacing-5);
+      z-index: 100;
+    }
+    .preview-sublabel {
+      font-size: var(--fp-ui-font-size-xs);
+      color: var(--fp-ui-color-text-tertiary);
+      margin-bottom: var(--fp-ui-spacing-3);
+      letter-spacing: 0.05em;
+    }
+    .preview-hero { padding-top: var(--fp-ui-spacing-24); padding-bottom: var(--fp-ui-spacing-8); }
+    .preview-hero__subtitle { letter-spacing: 0.3em; text-transform: uppercase; color: var(--fp-ui-color-text-tertiary); margin-bottom: var(--fp-ui-spacing-4); }
+    .preview-hero__desc { margin-top: var(--fp-ui-spacing-6); max-width: 540px; }
+    .preview-hero__actions { margin-top: var(--fp-ui-spacing-10); }
+    .preview-max-narrow { max-width: 460px; }
+    .preview-card-padding { padding: var(--fp-ui-spacing-10); }
+    .preview-card-padding-lg { padding: var(--fp-ui-spacing-10) var(--fp-ui-spacing-6); }
+    .preview-stat-padding { padding: var(--fp-ui-spacing-8); }
+    .preview-mb-2 { margin-bottom: var(--fp-ui-spacing-2); }
+    .preview-mb-3 { margin-bottom: var(--fp-ui-spacing-3); }
+    .preview-mb-4 { margin-bottom: var(--fp-ui-spacing-4); }
+    .preview-mb-6 { margin-bottom: var(--fp-ui-spacing-6); }
+    .preview-mt-4 { margin-top: var(--fp-ui-spacing-4); }
+    .swatch-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+    }
+    .swatch {
+      width: 3rem;
+      height: 3rem;
+      border-radius: var(--fp-ui-radius-md);
+      transition: transform var(--fp-ui-transition-base), box-shadow var(--fp-ui-transition-base);
+      cursor: pointer;
+    }
+    .swatch:hover,
+    .swatch:active {
+      transform: scale(1.2) translateY(-4px);
+      z-index: 2;
+    }
+    .swatch--glow:hover,
+    .swatch--glow:active {
+      box-shadow: 0 0 20px var(--swatch-glow), 0 0 40px var(--swatch-glow);
+    }
+    .swatch-label { font-size: 0.6rem; color: var(--fp-ui-color-text-tertiary); letter-spacing: 0.08em; }
+    .swatch-labeled { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+    .swatch--border { border: 1px solid var(--fp-ui-color-border-default); }
+
+    /* Preview-only animation (not part of the design system) */
+    @keyframes fp-float {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+    .stat-card:hover {
+      animation: fp-float 3s ease-in-out infinite;
+    }
+    .stat-value {
+      font-size: var(--fp-ui-font-size-5xl);
+      font-weight: var(--fp-ui-font-weight-hairline);
+      line-height: 1;
+    }
+    .stat-unit {
+      font-size: var(--fp-ui-font-size-sm);
+      font-weight: var(--fp-ui-font-weight-light);
+      opacity: 0.5;
+    }
+    .stat-label {
+      font-size: 0.65rem;
+      color: var(--fp-ui-color-text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--fp-ui-spacing-4);
+    }
+    .stat-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--fp-ui-spacing-5);
+    }
+    .stat-uptime { color: var(--fp-ui-color-success-400); text-shadow: 0 0 20px rgba(0,230,118,0.4), 0 0 50px rgba(0,230,118,0.15); }
+    .stat-latency { color: var(--fp-ui-color-accent-400); text-shadow: 0 0 20px rgba(0,212,245,0.4), 0 0 50px rgba(0,212,245,0.15); }
+    .stat-errors { color: var(--fp-ui-color-error-400); text-shadow: 0 0 20px rgba(255,23,68,0.4), 0 0 50px rgba(255,23,68,0.15); }
+
+    .preview-link { font-size: var(--fp-ui-font-size-sm); color: var(--fp-ui-color-accent-400); min-height: var(--fp-ui-touch-min); display: inline-flex; align-items: center; }
+    .preview-link--inline { color: var(--fp-ui-color-accent-400); }
+    .preview-glow-text { font-size: var(--fp-ui-font-size-2xl); font-weight: var(--fp-ui-font-weight-light); }
+    .preview-fieldset { border: none; }
+
+    /* ========================================
+       TABLET / RESPONSIVE
+       ======================================== */
+    @media (max-width: 768px) {
+      .fp-ui-h1 { font-size: var(--fp-ui-font-size-5xl); }
+      .fp-ui-h2 { font-size: var(--fp-ui-font-size-3xl); }
+
+      .preview-container {
+        padding: var(--fp-ui-spacing-8) var(--fp-ui-spacing-4);
+      }
+
+      .preview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .preview-container {
+        padding: var(--fp-ui-spacing-10) var(--fp-ui-spacing-8);
+      }
+    }
+
+    /* Pointer: coarse = touch device — increase spacing */
+    @media (pointer: coarse) {
+      .preview-row {
+        gap: var(--fp-ui-spacing-4);
+      }
+      .fp-ui-check {
+        padding: var(--fp-ui-spacing-2) 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Theme toggle (preview infrastructure — uses inline JS for demo only) -->
+  <div class="theme-toggle">
+    <button class="fp-ui-btn fp-ui-btn--secondary fp-ui-btn--sm"
+      onclick="var h=document.documentElement;var t=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',t);this.textContent=t==='dark'?'Light Mode':'Dark Mode';"
+      aria-label="Toggle color theme">
+      Light Mode
+    </button>
+  </div>
+
+  <main class="preview-container">
+
+    <!-- HERO -->
+    <div class="preview-section preview-hero">
+      <p class="fp-ui-text-xs preview-hero__subtitle">Design System</p>
+      <h1 class="fp-ui-h1">
+        <span class="fp-ui-text-holo">Fluid</span> Platinum
+      </h1>
+      <p class="fp-ui-text-lead preview-hero__desc">
+        Pure HTML &amp; CSS. Glassmorphic surfaces, ambient glow, holographic accents. Touch-ready, accessible, built for the next era.
+      </p>
+      <div class="fp-ui-flex-row fp-ui-gap-4 preview-hero__actions">
+        <button class="fp-ui-btn fp-ui-btn--primary fp-ui-btn--lg">Get Started</button>
+        <button class="fp-ui-btn fp-ui-btn--outline fp-ui-btn--lg">Explore Components</button>
+      </div>
+    </div>
+
+    <hr class="fp-ui-divider">
+
+    <!-- COLORS -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Color System</h2>
+
+      <p class="preview-sublabel">Neutral</p>
+      <div class="swatch-row preview-mb-6">
+        <div class="swatch swatch--border" style="background: var(--fp-ui-color-gray-50);" title="gray-50"></div>
+        <div class="swatch" style="background: var(--fp-ui-color-gray-100);" title="gray-100"></div>
+        <div class="swatch" style="background: var(--fp-ui-color-gray-200);" title="gray-200"></div>
+        <div class="swatch" style="background: var(--fp-ui-color-gray-300);" title="gray-300"></div>
+        <div class="swatch" style="background: var(--fp-ui-color-gray-400);" title="gray-400"></div>
+        <div class="swatch" style="background: var(--fp-ui-color-gray-500);" title="gray-500"></div>
+        <div class="swatch" style="background: var(--fp-ui-color-gray-600);" title="gray-600"></div>
+        <div class="swatch" style="background: var(--fp-ui-color-gray-700);" title="gray-700"></div>
+        <div class="swatch" style="background: var(--fp-ui-color-gray-800);" title="gray-800"></div>
+        <div class="swatch" style="background: var(--fp-ui-color-gray-900);" title="gray-900"></div>
+        <div class="swatch swatch--border" style="background: var(--fp-ui-color-gray-950);" title="gray-950"></div>
+      </div>
+
+      <p class="preview-sublabel">Accent</p>
+      <div class="swatch-row preview-mb-6">
+        <div class="swatch swatch--glow swatch--border" style="background: var(--fp-ui-color-accent-50); --swatch-glow: rgba(0,212,245,0.15);" title="accent-50"></div>
+        <div class="swatch swatch--glow" style="background: var(--fp-ui-color-accent-100); --swatch-glow: rgba(0,212,245,0.2);" title="accent-100"></div>
+        <div class="swatch swatch--glow" style="background: var(--fp-ui-color-accent-200); --swatch-glow: rgba(0,212,245,0.25);" title="accent-200"></div>
+        <div class="swatch swatch--glow" style="background: var(--fp-ui-color-accent-300); --swatch-glow: rgba(0,212,245,0.35);" title="accent-300"></div>
+        <div class="swatch swatch--glow" style="background: var(--fp-ui-color-accent-400); --swatch-glow: rgba(0,212,245,0.5); box-shadow: 0 0 15px rgba(0,212,245,0.3);" title="accent-400"></div>
+        <div class="swatch swatch--glow" style="background: var(--fp-ui-color-accent-500); --swatch-glow: rgba(0,212,245,0.5); box-shadow: 0 0 15px rgba(0,212,245,0.3);" title="accent-500"></div>
+        <div class="swatch swatch--glow" style="background: var(--fp-ui-color-accent-600); --swatch-glow: rgba(0,212,245,0.4); box-shadow: 0 0 12px rgba(0,212,245,0.2);" title="accent-600"></div>
+        <div class="swatch swatch--glow" style="background: var(--fp-ui-color-accent-700); --swatch-glow: rgba(0,212,245,0.3);" title="accent-700"></div>
+      </div>
+
+      <p class="preview-sublabel">Semantic</p>
+      <div class="fp-ui-flex-row fp-ui-gap-5 fp-ui-items-center">
+        <div class="swatch-labeled">
+          <div class="swatch swatch--glow" style="background: var(--fp-ui-color-success-500); --swatch-glow: rgba(0,230,118,0.5); box-shadow: 0 0 20px rgba(0,230,118,0.35); border-radius: var(--fp-ui-radius-lg);" title="success"></div>
+          <span class="swatch-label">success</span>
+        </div>
+        <div class="swatch-labeled">
+          <div class="swatch swatch--glow" style="background: var(--fp-ui-color-warning-500); --swatch-glow: rgba(255,171,0,0.5); box-shadow: 0 0 20px rgba(255,171,0,0.35); border-radius: var(--fp-ui-radius-lg);" title="warning"></div>
+          <span class="swatch-label">warning</span>
+        </div>
+        <div class="swatch-labeled">
+          <div class="swatch swatch--glow" style="background: var(--fp-ui-color-error-500); --swatch-glow: rgba(255,23,68,0.5); box-shadow: 0 0 20px rgba(255,23,68,0.35); border-radius: var(--fp-ui-radius-lg);" title="error"></div>
+          <span class="swatch-label">error</span>
+        </div>
+        <div class="swatch-labeled">
+          <div class="swatch swatch--glow" style="background: var(--fp-ui-color-violet-500); --swatch-glow: rgba(139,92,246,0.5); box-shadow: 0 0 20px rgba(139,92,246,0.35); border-radius: var(--fp-ui-radius-lg);" title="violet"></div>
+          <span class="swatch-label">violet</span>
+        </div>
+        <div class="swatch-labeled">
+          <div class="swatch swatch--glow" style="background: linear-gradient(135deg, var(--fp-ui-color-accent-400), var(--fp-ui-color-violet-400), var(--fp-ui-color-rose-400)); --swatch-glow: rgba(139,92,246,0.5); box-shadow: 0 0 20px rgba(139,92,246,0.25), 0 0 20px rgba(0,212,245,0.25); border-radius: var(--fp-ui-radius-lg);" title="holographic"></div>
+          <span class="swatch-label">holo</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- TYPOGRAPHY -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Typography</h2>
+      <div class="fp-ui-flex-col fp-ui-gap-6">
+        <p class="fp-ui-h1"><span class="fp-ui-text-holo">Heading</span> One</p>
+        <p class="fp-ui-h2">Heading Two</p>
+        <p class="fp-ui-h3">Heading Three</p>
+        <p class="fp-ui-h4">Heading Four</p>
+        <p>Body text — The quick brown fox jumps over the lazy dog. Default paragraph rendering at base size. Designed to float above glass surfaces with clarity.</p>
+        <p class="fp-ui-text-lead">Lead text — Weightless introductory text for heroes, section openers, and ambient descriptions.</p>
+        <p class="fp-ui-text-sm fp-ui-text-secondary">Small secondary — Metadata, timestamps, and supporting context that recedes into the surface.</p>
+        <p class="fp-ui-text-glow preview-glow-text">Glowing accent text</p>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- BUTTONS -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Buttons</h2>
+
+      <p class="preview-sublabel">Variants — hover primary to see the breathing glow</p>
+      <div class="preview-row">
+        <button class="fp-ui-btn fp-ui-btn--primary">Primary</button>
+        <button class="fp-ui-btn fp-ui-btn--secondary">Secondary</button>
+        <button class="fp-ui-btn fp-ui-btn--outline">Outline</button>
+        <button class="fp-ui-btn fp-ui-btn--ghost">Ghost</button>
+      </div>
+
+      <p class="preview-sublabel">Sizes — all meet 44px minimum touch target</p>
+      <div class="preview-row fp-ui-items-center">
+        <button class="fp-ui-btn fp-ui-btn--primary fp-ui-btn--sm">Small</button>
+        <button class="fp-ui-btn fp-ui-btn--primary">Default</button>
+        <button class="fp-ui-btn fp-ui-btn--primary fp-ui-btn--lg">Large</button>
+      </div>
+
+      <p class="preview-sublabel">Disabled</p>
+      <div class="preview-row">
+        <button class="fp-ui-btn fp-ui-btn--primary" disabled>Disabled</button>
+        <button class="fp-ui-btn fp-ui-btn--secondary" disabled>Disabled</button>
+        <button class="fp-ui-btn fp-ui-btn--outline" disabled>Disabled</button>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- BADGES -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Badges</h2>
+      <div class="preview-row fp-ui-gap-4">
+        <span class="fp-ui-badge fp-ui-badge--default">Default</span>
+        <span class="fp-ui-badge fp-ui-badge--accent">Accent</span>
+        <span class="fp-ui-badge fp-ui-badge--success">Online</span>
+        <span class="fp-ui-badge fp-ui-badge--warning">Pending</span>
+        <span class="fp-ui-badge fp-ui-badge--error">Critical</span>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- FORMS -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Form Elements</h2>
+      <div class="preview-grid">
+        <div class="fp-ui-flex-col fp-ui-gap-5">
+          <div class="fp-ui-field">
+            <label class="fp-ui-label" for="name">Full Name</label>
+            <input class="fp-ui-input" type="text" id="name" placeholder="Enter your name">
+          </div>
+          <div class="fp-ui-field">
+            <label class="fp-ui-label" for="email">Email</label>
+            <input class="fp-ui-input" type="email" id="email" placeholder="you@example.com">
+            <span class="fp-ui-field__hint">We'll never share your email.</span>
+          </div>
+          <div class="fp-ui-field">
+            <label class="fp-ui-label" for="email-err">Email (error)</label>
+            <input class="fp-ui-input fp-ui-input--error" type="email" id="email-err" value="not-an-email" aria-describedby="email-err-msg" aria-invalid="true">
+            <span class="fp-ui-field__error" id="email-err-msg">Please enter a valid email address.</span>
+          </div>
+          <div class="fp-ui-field">
+            <label class="fp-ui-label" for="region">Region</label>
+            <select class="fp-ui-input" id="region">
+              <option value="" disabled selected>Select a region</option>
+              <option value="na">North America</option>
+              <option value="eu">Europe</option>
+              <option value="ap">Asia Pacific</option>
+            </select>
+          </div>
+        </div>
+        <div class="fp-ui-flex-col fp-ui-gap-5">
+          <div class="fp-ui-field">
+            <label class="fp-ui-label" for="bio">Bio</label>
+            <textarea class="fp-ui-input" id="bio" placeholder="Tell us about yourself..."></textarea>
+          </div>
+          <fieldset class="preview-fieldset">
+            <legend class="fp-ui-label preview-mb-3">Notifications</legend>
+            <div class="fp-ui-flex-col fp-ui-gap-2">
+              <label class="fp-ui-check"><input type="checkbox" checked> Email notifications</label>
+              <label class="fp-ui-check"><input type="checkbox"> Push notifications</label>
+            </div>
+          </fieldset>
+          <fieldset class="preview-fieldset">
+            <legend class="fp-ui-label preview-mb-3">Plan</legend>
+            <div class="fp-ui-flex-col fp-ui-gap-2">
+              <label class="fp-ui-check"><input type="radio" name="plan" checked> Free</label>
+              <label class="fp-ui-check"><input type="radio" name="plan"> Pro</label>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- CARDS -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Cards</h2>
+      <div class="preview-grid">
+        <div class="fp-ui-card">
+          <div class="fp-ui-card__header">
+            <h3 class="fp-ui-h4">System Status</h3>
+          </div>
+          <div class="fp-ui-card__body">
+            <p class="fp-ui-text-sm fp-ui-text-secondary">Glass surfaces with blur backdrop. Hover to see the glow intensify and the card lift.</p>
+          </div>
+        </div>
+        <div class="fp-ui-card">
+          <div class="fp-ui-card__body">
+            <div class="fp-ui-flex-row fp-ui-justify-between fp-ui-items-center preview-mb-4">
+              <h3 class="fp-ui-h4">Neural Core</h3>
+              <span class="fp-ui-badge fp-ui-badge--success">Online</span>
+            </div>
+            <p class="fp-ui-text-sm fp-ui-text-secondary">Composable surfaces. Every component is designed to live on glass.</p>
+          </div>
+          <div class="fp-ui-card__footer fp-ui-flex-row fp-ui-gap-4 fp-ui-justify-end">
+            <button class="fp-ui-btn fp-ui-btn--ghost fp-ui-btn--sm">Dismiss</button>
+            <button class="fp-ui-btn fp-ui-btn--primary fp-ui-btn--sm">Configure</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- ALERTS -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Alerts</h2>
+      <div class="fp-ui-flex-col fp-ui-gap-5">
+        <div class="fp-ui-alert fp-ui-alert--info" role="alert">
+          <div class="fp-ui-alert__title">Information</div>
+          <p>System configuration synced across all nodes.</p>
+        </div>
+        <div class="fp-ui-alert fp-ui-alert--success" role="alert">
+          <div class="fp-ui-alert__title">Success</div>
+          <p>Deployment complete. All services operational.</p>
+        </div>
+        <div class="fp-ui-alert fp-ui-alert--warning" role="alert">
+          <div class="fp-ui-alert__title">Warning</div>
+          <p>Resource allocation approaching threshold.</p>
+        </div>
+        <div class="fp-ui-alert fp-ui-alert--error" role="alert">
+          <div class="fp-ui-alert__title">Error</div>
+          <p>Connection to external service failed. Auto-retrying.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- DASHBOARD STATS -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Sample: Dashboard</h2>
+      <div class="stat-grid-3">
+        <div class="fp-ui-card stat-card">
+          <div class="fp-ui-card__body fp-ui-text-center preview-card-padding-lg">
+            <p class="stat-label">Uptime</p>
+            <p class="stat-value stat-uptime">99.98<span class="stat-unit">%</span></p>
+          </div>
+        </div>
+        <div class="fp-ui-card stat-card">
+          <div class="fp-ui-card__body fp-ui-text-center preview-card-padding-lg">
+            <p class="stat-label">Latency</p>
+            <p class="stat-value stat-latency">12<span class="stat-unit">ms</span></p>
+          </div>
+        </div>
+        <div class="fp-ui-card stat-card">
+          <div class="fp-ui-card__body fp-ui-text-center preview-card-padding-lg">
+            <p class="stat-label">Errors</p>
+            <p class="stat-value stat-errors">3</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- LOGIN -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Sample: Authentication</h2>
+      <div class="preview-max-narrow">
+        <div class="fp-ui-card">
+          <div class="fp-ui-card__body fp-ui-flex-col fp-ui-gap-6 preview-card-padding">
+            <div class="fp-ui-text-center">
+              <p class="fp-ui-h2 preview-mb-2"><span class="fp-ui-text-holo">Welcome</span> back</p>
+              <p class="fp-ui-text-sm fp-ui-text-secondary">Sign in to continue</p>
+            </div>
+            <div class="fp-ui-field">
+              <label class="fp-ui-label" for="login-email">Email</label>
+              <input class="fp-ui-input" type="email" id="login-email" placeholder="you@example.com">
+            </div>
+            <div class="fp-ui-field">
+              <label class="fp-ui-label" for="login-pass">Password</label>
+              <input class="fp-ui-input" type="password" id="login-pass" placeholder="Enter your password">
+            </div>
+            <div class="fp-ui-flex-row fp-ui-justify-between fp-ui-items-center">
+              <label class="fp-ui-check"><input type="checkbox"> Remember me</label>
+              <a href="#!" class="preview-link">Forgot password?</a>
+            </div>
+            <button class="fp-ui-btn fp-ui-btn--primary fp-ui-w-full">Sign In</button>
+            <p class="fp-ui-text-sm fp-ui-text-center fp-ui-text-secondary">
+              New here? <a href="#!" class="preview-link--inline">Create account</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- NAVBAR -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Navbar</h2>
+      <nav class="fp-ui-navbar" style="position: relative;" aria-label="Demo navigation">
+        <a class="fp-ui-navbar__brand" href="#!">FluidPlatinum</a>
+        <ul class="fp-ui-navbar__nav">
+          <li><a class="fp-ui-navbar__link fp-ui-navbar__link--active" href="#!">Dashboard</a></li>
+          <li><a class="fp-ui-navbar__link" href="#!">Projects</a></li>
+          <li><a class="fp-ui-navbar__link" href="#!">Settings</a></li>
+        </ul>
+      </nav>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- BREADCRUMB -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Breadcrumb</h2>
+      <nav aria-label="Breadcrumb">
+        <ol class="fp-ui-breadcrumb">
+          <li class="fp-ui-breadcrumb__item"><a class="fp-ui-breadcrumb__link" href="#!">Home</a></li>
+          <li class="fp-ui-breadcrumb__item"><a class="fp-ui-breadcrumb__link" href="#!">Projects</a></li>
+          <li class="fp-ui-breadcrumb__item fp-ui-breadcrumb__item--current" aria-current="page">Fluid Platinum</li>
+        </ol>
+      </nav>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- TABS -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Tabs</h2>
+      <div class="fp-ui-tabs">
+        <input type="radio" name="demo-tabs" id="demo-tab1" class="fp-ui-tabs__radio" checked>
+        <label for="demo-tab1" class="fp-ui-tabs__tab">Overview</label>
+        <input type="radio" name="demo-tabs" id="demo-tab2" class="fp-ui-tabs__radio">
+        <label for="demo-tab2" class="fp-ui-tabs__tab">Analytics</label>
+        <input type="radio" name="demo-tabs" id="demo-tab3" class="fp-ui-tabs__radio">
+        <label for="demo-tab3" class="fp-ui-tabs__tab">Settings</label>
+        <div class="fp-ui-tabs__panel">Overview content — system health, recent activity, quick actions.</div>
+        <div class="fp-ui-tabs__panel">Analytics content — charts, metrics, trends over time.</div>
+        <div class="fp-ui-tabs__panel">Settings content — preferences, notifications, account details.</div>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- TABLE -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Table</h2>
+      <div class="fp-ui-table-wrap">
+        <table class="fp-ui-table fp-ui-table--striped fp-ui-table--hover" aria-label="Service status">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Status</th>
+              <th scope="col">Latency</th>
+              <th scope="col">Region</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>api-gateway</td>
+              <td><span class="fp-ui-badge fp-ui-badge--success">Online</span></td>
+              <td>12ms</td>
+              <td>US-East</td>
+            </tr>
+            <tr>
+              <td>auth-service</td>
+              <td><span class="fp-ui-badge fp-ui-badge--success">Online</span></td>
+              <td>8ms</td>
+              <td>US-West</td>
+            </tr>
+            <tr>
+              <td>ml-pipeline</td>
+              <td><span class="fp-ui-badge fp-ui-badge--warning">Pending</span></td>
+              <td>145ms</td>
+              <td>EU-Central</td>
+            </tr>
+            <tr>
+              <td>cache-layer</td>
+              <td><span class="fp-ui-badge fp-ui-badge--error">Critical</span></td>
+              <td>—</td>
+              <td>AP-South</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- TOGGLE -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Toggle</h2>
+      <div class="fp-ui-stack fp-ui-stack--sm">
+        <label class="fp-ui-toggle"><input type="checkbox" checked><span class="fp-ui-toggle__track"></span>Dark mode</label>
+        <label class="fp-ui-toggle"><input type="checkbox"><span class="fp-ui-toggle__track"></span>Notifications</label>
+        <label class="fp-ui-toggle"><input type="checkbox" checked><span class="fp-ui-toggle__track"></span>Auto-sync</label>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- AVATAR -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Avatar</h2>
+      <p class="preview-sublabel">Sizes</p>
+      <div class="preview-row">
+        <div class="fp-ui-avatar fp-ui-avatar--sm" aria-hidden="true">S</div>
+        <div class="fp-ui-avatar" aria-hidden="true">MD</div>
+        <div class="fp-ui-avatar fp-ui-avatar--lg" aria-hidden="true">LG</div>
+        <div class="fp-ui-avatar fp-ui-avatar--xl" aria-hidden="true">XL</div>
+      </div>
+      <p class="preview-sublabel">Group (overlapping)</p>
+      <div class="fp-ui-avatar-group">
+        <div class="fp-ui-avatar" aria-hidden="true">A</div>
+        <div class="fp-ui-avatar" aria-hidden="true">B</div>
+        <div class="fp-ui-avatar" aria-hidden="true">C</div>
+        <div class="fp-ui-avatar" aria-hidden="true">+3</div>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- PROGRESS -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Progress</h2>
+      <div class="fp-ui-flex-col fp-ui-gap-6">
+        <div>
+          <p class="preview-sublabel">Default (accent)</p>
+          <div class="fp-ui-progress" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"><div class="fp-ui-progress__bar" style="width: 72%;"></div></div>
+        </div>
+        <div>
+          <p class="preview-sublabel">Success</p>
+          <div class="fp-ui-progress fp-ui-progress--success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><div class="fp-ui-progress__bar" style="width: 100%;"></div></div>
+        </div>
+        <div>
+          <p class="preview-sublabel">Warning</p>
+          <div class="fp-ui-progress fp-ui-progress--warning" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"><div class="fp-ui-progress__bar" style="width: 45%;"></div></div>
+        </div>
+        <div>
+          <p class="preview-sublabel">Error (large)</p>
+          <div class="fp-ui-progress fp-ui-progress--error fp-ui-progress--lg" role="progressbar" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"><div class="fp-ui-progress__bar" style="width: 18%;"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- TOOLTIP -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Tooltip</h2>
+      <div class="preview-row">
+        <span class="fp-ui-tooltip" data-tooltip="System uptime: 99.98%" tabindex="0">Hover for tooltip</span>
+        <span class="fp-ui-tooltip fp-ui-tooltip--bottom" data-tooltip="Opens in new tab" tabindex="0">Tooltip below</span>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- SKELETON -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Skeleton</h2>
+      <div class="preview-grid">
+        <div class="fp-ui-card">
+          <div class="fp-ui-card__body fp-ui-flex-col fp-ui-gap-3">
+            <div class="fp-ui-flex-row fp-ui-items-center fp-ui-gap-3 preview-mb-2">
+              <div class="fp-ui-skeleton fp-ui-skeleton--avatar"></div>
+              <div style="flex: 1;">
+                <div class="fp-ui-skeleton fp-ui-skeleton--heading preview-mb-2"></div>
+              </div>
+            </div>
+            <div class="fp-ui-skeleton fp-ui-skeleton--text"></div>
+            <div class="fp-ui-skeleton fp-ui-skeleton--text"></div>
+            <div class="fp-ui-skeleton fp-ui-skeleton--text" style="width: 60%;"></div>
+            <div class="fp-ui-skeleton fp-ui-skeleton--btn preview-mt-4"></div>
+          </div>
+        </div>
+        <div class="fp-ui-skeleton fp-ui-skeleton--card"></div>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- MODAL -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Modal</h2>
+      <a href="#demo-modal" class="fp-ui-btn fp-ui-btn--outline">Open Modal</a>
+      <div class="fp-ui-modal" id="demo-modal">
+        <div class="fp-ui-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <a href="#!" class="fp-ui-modal__close" aria-label="Close">&times;</a>
+          <div class="fp-ui-modal__title" id="modal-title">Confirm Action</div>
+          <div class="fp-ui-modal__body">
+            <p>Are you sure you want to proceed? This will deploy the latest build to production.</p>
+          </div>
+          <div class="fp-ui-modal__footer">
+            <a href="#!" class="fp-ui-btn fp-ui-btn--ghost">Cancel</a>
+            <a href="#!" class="fp-ui-btn fp-ui-btn--primary">Deploy</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="fp-ui-divider">
+
+    <!-- OVERLAPPING GLASS DEMO -->
+    <section class="preview-section">
+      <h2 class="preview-section__title">Sample: Layered Glass</h2>
+      <p class="fp-ui-text-sm fp-ui-text-secondary preview-mb-6">Elements are transparent — when layered, content behind blurs through.</p>
+      <div style="position: relative; height: 420px;">
+        <div class="fp-ui-card" style="position: absolute; top: 0; left: 0; width: 340px;">
+          <div class="fp-ui-card__body preview-stat-padding">
+            <h3 class="fp-ui-h4 preview-mb-3">Background Layer</h3>
+            <p class="fp-ui-text-sm fp-ui-text-secondary">This card sits behind the others. Notice how it blurs through the overlapping elements above it.</p>
+            <div class="fp-ui-flex-row fp-ui-gap-3 preview-mt-4">
+              <span class="fp-ui-badge fp-ui-badge--accent">Layer 1</span>
+              <span class="fp-ui-badge fp-ui-badge--success">Active</span>
+            </div>
+          </div>
+        </div>
+        <div class="fp-ui-card" style="position: absolute; top: 60px; left: 180px; width: 340px;">
+          <div class="fp-ui-card__body preview-stat-padding">
+            <h3 class="fp-ui-h4 preview-mb-3">Middle Layer</h3>
+            <p class="fp-ui-text-sm fp-ui-text-secondary">Overlapping the first card. The blur backdrop makes the layer beneath frosted and readable.</p>
+            <div class="preview-mt-4">
+              <button class="fp-ui-btn fp-ui-btn--outline fp-ui-btn--sm">Action</button>
+            </div>
+          </div>
+        </div>
+        <div class="fp-ui-card" style="position: absolute; top: 140px; left: 80px; width: 340px;">
+          <div class="fp-ui-card__body preview-stat-padding">
+            <h3 class="fp-ui-h4 preview-mb-3">Top Layer</h3>
+            <p class="fp-ui-text-sm fp-ui-text-secondary">Stacked on both cards below. Each glass layer adds depth while staying transparent.</p>
+            <div class="preview-mt-4">
+              <button class="fp-ui-btn fp-ui-btn--primary fp-ui-btn--sm">Primary</button>
+            </div>
+          </div>
+        </div>
+        <div class="fp-ui-alert fp-ui-alert--info" role="alert" style="position: absolute; bottom: 0; right: 0; width: 320px;">
+          <div class="fp-ui-alert__title">Notification</div>
+          <p>This alert overlaps the cards — content behind is frosted.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

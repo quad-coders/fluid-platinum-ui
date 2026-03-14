@@ -1,0 +1,44 @@
+/* ========================================
+   BREADCRUMB — Navigation trail
+   ======================================== */
+.fp-ui-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--fp-ui-spacing-1);
+  font-size: var(--fp-ui-font-size-sm);
+}
+
+.fp-ui-breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fp-ui-spacing-1);
+}
+
+.fp-ui-breadcrumb__item + .fp-ui-breadcrumb__item::before {
+  content: '/';
+  color: var(--fp-ui-color-text-tertiary);
+  margin-inline-end: var(--fp-ui-spacing-1);
+}
+
+.fp-ui-breadcrumb__link {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--fp-ui-spacing-1) var(--fp-ui-spacing-2);
+  min-height: var(--fp-ui-touch-min);
+  color: var(--fp-ui-color-text-secondary);
+  border-radius: var(--fp-ui-radius-sm);
+  transition: color var(--fp-ui-transition-fast);
+}
+
+.fp-ui-breadcrumb__link:hover {
+  color: var(--fp-ui-color-accent-400);
+}
+
+[data-theme="light"] .fp-ui-breadcrumb__link:hover {
+  color: var(--fp-ui-color-accent-700);
+}
+
+.fp-ui-breadcrumb__item--current {
+  color: var(--fp-ui-color-text-primary);
+}

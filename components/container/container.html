@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Container — Fluid Platinum UI</title>
+  <link rel="stylesheet" href="../../index.css">
+</head>
+<body style="padding: 2rem;">
+
+  <h1 class="fp-ui-h2">Container</h1>
+  <p class="fp-ui-text-lead">Centered max-width wrapper with responsive padding.</p>
+
+  <hr class="fp-ui-divider">
+
+  <div style="margin-top: 1rem;">
+    <p class="fp-ui-text-sm fp-ui-text-secondary">Default (1120px)</p>
+    <div class="fp-ui-container" style="border: 1px dashed var(--fp-ui-color-border-default); padding: 1rem; margin-top: 0.5rem;">
+      .fp-ui-container
+    </div>
+
+    <p class="fp-ui-text-sm fp-ui-text-secondary" style="margin-top: 1.5rem;">Small (640px)</p>
+    <div class="fp-ui-container fp-ui-container--sm" style="border: 1px dashed var(--fp-ui-color-border-default); padding: 1rem; margin-top: 0.5rem;">
+      .fp-ui-container--sm
+    </div>
+
+    <p class="fp-ui-text-sm fp-ui-text-secondary" style="margin-top: 1.5rem;">Medium (768px)</p>
+    <div class="fp-ui-container fp-ui-container--md" style="border: 1px dashed var(--fp-ui-color-border-default); padding: 1rem; margin-top: 0.5rem;">
+      .fp-ui-container--md
+    </div>
+  </div>
+
+  <!--
+    USAGE:
+    <div class="fp-ui-container">Content</div>
+
+    SIZES: default (1120px), --sm (640px), --md (768px), --lg (1024px), --xl (1280px)
+    Customizable via --fp-ui-container-max-w token.
+  -->
+
+</body>
+</html>

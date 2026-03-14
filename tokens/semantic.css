@@ -1,0 +1,47 @@
+/* ========================================
+   TIER 2: SEMANTIC TOKENS
+   Intent-based mappings. Dark-first, with [data-theme="light"] overrides.
+   Components reference these, never primitives directly.
+   ======================================== */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --fp-ui-color-bg-primary:     var(--fp-ui-color-gray-950);
+  --fp-ui-color-bg-secondary:   rgba(13, 19, 32, 0.6);
+  --fp-ui-color-bg-tertiary:    rgba(26, 34, 56, 0.5);
+  --fp-ui-color-bg-glass:       rgba(18, 27, 45, 0.01);
+  --fp-ui-color-bg-glass-hover: rgba(18, 27, 45, 0.02);
+  --fp-ui-color-bg-glass-strong: rgba(18, 27, 45, 0.04);
+  --fp-ui-color-text-primary:   var(--fp-ui-color-gray-50);
+  --fp-ui-color-text-secondary: var(--fp-ui-color-gray-300);
+  --fp-ui-color-text-tertiary:  var(--fp-ui-color-gray-500);
+  --fp-ui-color-text-inverse:   var(--fp-ui-color-gray-950);
+  --fp-ui-color-border-default: rgba(100, 120, 160, 0.15);
+  --fp-ui-color-border-strong:  rgba(100, 120, 160, 0.28);
+  --fp-ui-color-border-glow:    rgba(0, 212, 245, 0.35);
+  --fp-ui-color-focus:          var(--fp-ui-color-accent-400);
+  --fp-ui-shadow-md:  0 8px 32px rgba(0, 0, 0, 0.35), 0 0 1px rgba(100, 120, 160, 0.1);
+  --fp-ui-shadow-lg:  0 20px 60px rgba(0, 0, 0, 0.45), 0 0 1px rgba(100, 120, 160, 0.15);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --fp-ui-color-bg-primary:     #eef2f8;
+  --fp-ui-color-bg-secondary:   rgba(255, 255, 255, 0.6);
+  --fp-ui-color-bg-tertiary:    rgba(216, 224, 235, 0.5);
+  --fp-ui-color-bg-glass:       rgba(255, 255, 255, 0.005);
+  --fp-ui-color-bg-glass-hover: rgba(255, 255, 255, 0.01);
+  --fp-ui-color-bg-glass-strong: rgba(255, 255, 255, 0.02);
+  --fp-ui-color-text-primary:   var(--fp-ui-color-gray-900);
+  --fp-ui-color-text-secondary: var(--fp-ui-color-gray-600);
+  --fp-ui-color-text-tertiary:  var(--fp-ui-color-gray-400);
+  --fp-ui-color-text-inverse:   #fff;
+  --fp-ui-color-border-default: rgba(80, 100, 140, 0.3);
+  --fp-ui-color-border-strong:  rgba(80, 100, 140, 0.45);
+  --fp-ui-color-border-glow:    rgba(0, 184, 217, 0.5);
+  --fp-ui-color-focus:          var(--fp-ui-color-accent-600);
+  --fp-ui-shadow-md:  0 8px 32px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.06);
+  --fp-ui-shadow-lg:  0 20px 60px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.08);
+}

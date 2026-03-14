@@ -1,0 +1,48 @@
+/* ========================================
+   CARD — Breathing glow border
+   ======================================== */
+.fp-ui-card {
+  position: relative;
+  background: var(--fp-ui-card-bg);
+  backdrop-filter: blur(var(--fp-ui-card-blur));
+  -webkit-backdrop-filter: blur(var(--fp-ui-card-blur));
+  border: 1px solid var(--fp-ui-card-border);
+  border-radius: var(--fp-ui-card-radius);
+  box-shadow: var(--fp-ui-shadow-md);
+  overflow: clip;
+  transition: border-color var(--fp-ui-transition-slow), box-shadow var(--fp-ui-transition-slow), transform var(--fp-ui-transition-slow);
+}
+
+.fp-ui-card:hover {
+  border-color: rgba(0, 212, 245, 0.2);
+  box-shadow:
+    var(--fp-ui-shadow-lg),
+    0 0 40px rgba(0, 212, 245, 0.12),
+    0 0 80px rgba(139, 92, 246, 0.05);
+  transform: translateY(-3px) scale(1.01);
+}
+
+.fp-ui-card:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.fp-ui-card__header {
+  padding: var(--fp-ui-card-padding);
+  border-block-end: 1px solid var(--fp-ui-color-border-default);
+}
+
+.fp-ui-card__body {
+  padding: var(--fp-ui-card-padding);
+}
+
+.fp-ui-card__footer {
+  padding: var(--fp-ui-card-padding);
+  border-block-start: 1px solid var(--fp-ui-color-border-default);
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .fp-ui-card {
+    background: var(--fp-ui-color-bg-secondary);
+  }
+}

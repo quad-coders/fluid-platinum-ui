@@ -1,0 +1,93 @@
+/* ========================================
+   TIER 1: PRIMITIVES
+   Raw values — colors, spacing, typography, radius, transitions.
+   These are the foundation. Never reference these directly in components;
+   use semantic tokens (Tier 2) instead.
+   ======================================== */
+:root {
+  --fp-ui-color-gray-50:  #eef2f7;
+  --fp-ui-color-gray-100: #d8e0eb;
+  --fp-ui-color-gray-200: #b4c1d4;
+  --fp-ui-color-gray-300: #8a9bba;
+  --fp-ui-color-gray-400: #6478a0;
+  --fp-ui-color-gray-500: #4a5d85;
+  --fp-ui-color-gray-600: #38476a;
+  --fp-ui-color-gray-700: #283350;
+  --fp-ui-color-gray-800: #1a2238;
+  --fp-ui-color-gray-900: #0d1320;
+  --fp-ui-color-gray-950: #060a12;
+  --fp-ui-color-accent-50:  #e6fcff;
+  --fp-ui-color-accent-100: #b3f5ff;
+  --fp-ui-color-accent-200: #80eeff;
+  --fp-ui-color-accent-300: #4de7ff;
+  --fp-ui-color-accent-400: #1ae0ff;
+  --fp-ui-color-accent-500: #00d4f5;
+  --fp-ui-color-accent-600: #00b8d9;
+  --fp-ui-color-accent-700: #0090aa;
+  --fp-ui-color-violet-300: #c4b5fd;
+  --fp-ui-color-violet-400: #a78bfa;
+  --fp-ui-color-violet-500: #8b5cf6;
+  --fp-ui-color-violet-600: #7c3aed;
+  --fp-ui-color-rose-400: #fb7185;
+  --fp-ui-color-rose-500: #f43f5e;
+  --fp-ui-color-success-400: #4ade80;
+  --fp-ui-color-success-500: #00e676;
+  --fp-ui-color-success-600: #00c853;
+  --fp-ui-color-success-700: #009e42;
+  --fp-ui-color-warning-400: #fbbf24;
+  --fp-ui-color-warning-500: #ffab00;
+  --fp-ui-color-warning-600: #ff9100;
+  --fp-ui-color-warning-700: #cc7400;
+  --fp-ui-color-error-400: #fb7185;
+  --fp-ui-color-error-500: #ff1744;
+  --fp-ui-color-error-600: #d50032;
+  --fp-ui-color-error-700: #ab0028;
+  --fp-ui-spacing-1:  0.25rem;
+  --fp-ui-spacing-2:  0.5rem;
+  --fp-ui-spacing-3:  0.75rem;
+  --fp-ui-spacing-4:  1rem;
+  --fp-ui-spacing-5:  1.25rem;
+  --fp-ui-spacing-6:  1.5rem;
+  --fp-ui-spacing-8:  2rem;
+  --fp-ui-spacing-10: 2.5rem;
+  --fp-ui-spacing-12: 3rem;
+  --fp-ui-spacing-16: 4rem;
+  --fp-ui-spacing-20: 5rem;
+  --fp-ui-spacing-24: 6rem;
+
+  /* Touch-friendly minimum target */
+  --fp-ui-touch-min: 44px;
+  --fp-ui-font-family: 'Inter', -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, sans-serif;
+  --fp-ui-font-size-xs:   0.75rem;
+  --fp-ui-font-size-sm:   0.875rem;
+  --fp-ui-font-size-base: 1rem;
+  --fp-ui-font-size-lg:   1.125rem;
+  --fp-ui-font-size-xl:   1.25rem;
+  --fp-ui-font-size-2xl:  1.5rem;
+  --fp-ui-font-size-3xl:  1.875rem;
+  --fp-ui-font-size-4xl:  2.25rem;
+  --fp-ui-font-size-5xl:  3rem;
+  --fp-ui-font-size-6xl:  3.75rem;
+  --fp-ui-font-size-7xl:  4.5rem;
+  --fp-ui-font-weight-hairline:  100;
+  --fp-ui-font-weight-thin:      200;
+  --fp-ui-font-weight-light:     300;
+  --fp-ui-font-weight-normal:    400;
+  --fp-ui-font-weight-medium:    500;
+  --fp-ui-font-weight-semibold:  600;
+  --fp-ui-font-weight-bold:      700;
+  --fp-ui-line-height-none:      1;
+  --fp-ui-line-height-tight:     1.1;
+  --fp-ui-line-height-snug:      1.25;
+  --fp-ui-line-height-normal:    1.5;
+  --fp-ui-line-height-relaxed:   1.75;
+  --fp-ui-radius-sm:   4px;
+  --fp-ui-radius-md:   8px;
+  --fp-ui-radius-lg:   12px;
+  --fp-ui-radius-xl:   16px;
+  --fp-ui-radius-2xl:  20px;
+  --fp-ui-radius-full: 9999px;
+  --fp-ui-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --fp-ui-transition-base: 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  --fp-ui-transition-slow: 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}

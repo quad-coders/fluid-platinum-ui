@@ -1,0 +1,42 @@
+/* ========================================
+   RESET
+   Box-sizing, normalize, tap-highlight, scroll-behavior.
+   ======================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  /* Prevent tap highlight on mobile */
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  font-family: var(--fp-ui-font-family);
+  font-size: var(--fp-ui-font-size-base);
+  line-height: var(--fp-ui-line-height-normal);
+  color: var(--fp-ui-color-text-primary);
+  background-color: var(--fp-ui-color-bg-primary);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; }
+ul, ol { list-style: none; }
+img, svg { max-width: 100%; display: block; }
+button, input, select, textarea { font: inherit; color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--fp-ui-color-focus);
+  outline-offset: 3px;
+}

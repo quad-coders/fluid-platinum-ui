@@ -1,0 +1,31 @@
+/* ========================================
+   TIER 3: COMPONENT TOKENS
+   Per-component overrides. Users can customize individual components
+   by overriding these in their own stylesheets.
+   ======================================== */
+:root {
+  /* Button */
+  --fp-ui-btn-padding-x:     var(--fp-ui-spacing-6);
+  --fp-ui-btn-padding-y:     var(--fp-ui-spacing-3);
+  --fp-ui-btn-radius:        var(--fp-ui-radius-lg);
+  --fp-ui-btn-min-h:         var(--fp-ui-touch-min);
+  --fp-ui-btn-min-h-lg:      52px;
+
+  /* Card */
+  --fp-ui-card-bg:           var(--fp-ui-color-bg-glass);
+  --fp-ui-card-border:       var(--fp-ui-color-border-default);
+  --fp-ui-card-radius:       var(--fp-ui-radius-xl);
+  --fp-ui-card-padding:      var(--fp-ui-spacing-6);
+  --fp-ui-card-blur:         2px;
+
+  /* Input */
+  --fp-ui-input-bg:          var(--fp-ui-color-bg-glass);
+  --fp-ui-input-border:      var(--fp-ui-color-border-default);
+  --fp-ui-input-radius:      var(--fp-ui-radius-md);
+  --fp-ui-input-padding-x:   var(--fp-ui-spacing-5);
+  --fp-ui-input-padding-y:   var(--fp-ui-spacing-3);
+  --fp-ui-input-min-h:       48px;
+
+  /* Container */
+  --fp-ui-container-max-w:   1120px;
+}

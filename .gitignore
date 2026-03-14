@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+
+# Internal tooling (not part of the design system)
+.claude/
+docs/plans/

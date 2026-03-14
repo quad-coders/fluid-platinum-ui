@@ -1,0 +1,62 @@
+/* ========================================
+   TABLE — Glass data table with striped rows
+   ======================================== */
+.fp-ui-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fp-ui-font-size-sm);
+}
+
+.fp-ui-table th,
+.fp-ui-table td {
+  padding: var(--fp-ui-spacing-3) var(--fp-ui-spacing-5);
+  text-align: start;
+  border-block-end: 1px solid var(--fp-ui-color-border-default);
+}
+
+.fp-ui-table th {
+  font-weight: var(--fp-ui-font-weight-medium);
+  color: var(--fp-ui-color-text-secondary);
+  font-size: var(--fp-ui-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.fp-ui-table td {
+  color: var(--fp-ui-color-text-primary);
+}
+
+/* Hoverable rows (before striped so specificity ascends) */
+.fp-ui-table--hover tbody tr {
+  transition: background var(--fp-ui-transition-fast);
+}
+
+.fp-ui-table--hover tbody tr:hover {
+  background: var(--fp-ui-color-bg-glass-hover);
+}
+
+/* Striped rows */
+.fp-ui-table--striped tbody tr:nth-child(even) {
+  background: var(--fp-ui-color-bg-glass);
+}
+
+/* Glass wrapper for the table */
+.fp-ui-table-wrap {
+  background: var(--fp-ui-color-bg-glass);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid var(--fp-ui-color-border-default);
+  border-radius: var(--fp-ui-radius-lg);
+  overflow: hidden;
+}
+
+.fp-ui-table-wrap tbody tr:last-child td {
+  border-block-end: none;
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .fp-ui-table-wrap {
+    background: var(--fp-ui-color-bg-secondary);
+  }
+}

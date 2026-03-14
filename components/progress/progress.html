@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress — Fluid Platinum UI</title>
+  <link rel="stylesheet" href="../../index.css">
+</head>
+<body style="padding: 2rem;">
+
+  <h1 class="fp-ui-h2">Progress</h1>
+  <p class="fp-ui-text-lead">Progress bars with semantic color variants and glow effects.</p>
+
+  <hr class="fp-ui-divider">
+
+  <div class="fp-ui-flex-col fp-ui-gap-6" style="margin-top: 1rem; max-width: 600px;">
+    <div>
+      <p class="fp-ui-text-sm fp-ui-text-secondary">Default (accent) — 72%</p>
+      <div class="fp-ui-progress" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+        <div class="fp-ui-progress__bar" style="width: 72%;"></div>
+      </div>
+    </div>
+    <div>
+      <p class="fp-ui-text-sm fp-ui-text-secondary">Success — 100%</p>
+      <div class="fp-ui-progress fp-ui-progress--success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+        <div class="fp-ui-progress__bar" style="width: 100%;"></div>
+      </div>
+    </div>
+    <div>
+      <p class="fp-ui-text-sm fp-ui-text-secondary">Warning — 45%</p>
+      <div class="fp-ui-progress fp-ui-progress--warning" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
+        <div class="fp-ui-progress__bar" style="width: 45%;"></div>
+      </div>
+    </div>
+    <div>
+      <p class="fp-ui-text-sm fp-ui-text-secondary">Error (large) — 18%</p>
+      <div class="fp-ui-progress fp-ui-progress--error fp-ui-progress--lg" role="progressbar" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100">
+        <div class="fp-ui-progress__bar" style="width: 18%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    USAGE:
+    <div class="fp-ui-progress" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
+      <div class="fp-ui-progress__bar" style="width: 72%;"></div>
+    </div>
+
+    VARIANTS: default (accent), --success, --warning, --error
+    SIZES:    --sm (3px), default (6px), --lg (10px)
+    Set width via inline style. Include ARIA attributes for accessibility.
+  -->
+
+</body>
+</html>

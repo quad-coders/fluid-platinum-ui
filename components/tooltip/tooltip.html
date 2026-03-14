@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tooltip — Fluid Platinum UI</title>
+  <link rel="stylesheet" href="../../index.css">
+</head>
+<body style="padding: 4rem;">
+
+  <h1 class="fp-ui-h2">Tooltip</h1>
+  <p class="fp-ui-text-lead">CSS-only tooltips via data-tooltip attribute. Add tabindex="0" for keyboard access.</p>
+
+  <hr class="fp-ui-divider">
+
+  <div class="fp-ui-row fp-ui-gap-6" style="margin-top: 2rem;">
+    <span class="fp-ui-tooltip" data-tooltip="System uptime: 99.98%" tabindex="0">Hover for tooltip (top)</span>
+    <span class="fp-ui-tooltip fp-ui-tooltip--bottom" data-tooltip="Opens in new tab" tabindex="0">Tooltip below</span>
+  </div>
+
+  <!--
+    USAGE:
+    <span class="fp-ui-tooltip" data-tooltip="Tooltip text" tabindex="0">Hover me</span>
+    <span class="fp-ui-tooltip fp-ui-tooltip--bottom" data-tooltip="Below" tabindex="0">Bottom</span>
+
+    Default shows above, --bottom shows below.
+  -->
+
+</body>
+</html>

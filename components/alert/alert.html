@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alert — Fluid Platinum UI</title>
+  <link rel="stylesheet" href="../../index.css">
+</head>
+<body style="padding: 2rem;">
+
+  <h1 class="fp-ui-h2">Alert</h1>
+  <p class="fp-ui-text-lead">Notification banners with colored left accent bar and inner gradient wash.</p>
+
+  <hr class="fp-ui-divider">
+
+  <div class="fp-ui-flex-col fp-ui-gap-5" style="margin-top: 1rem;">
+    <div class="fp-ui-alert fp-ui-alert--info" role="alert">
+      <div class="fp-ui-alert__title">Information</div>
+      <p>System configuration synced across all nodes.</p>
+    </div>
+    <div class="fp-ui-alert fp-ui-alert--success" role="alert">
+      <div class="fp-ui-alert__title">Success</div>
+      <p>Deployment complete. All services operational.</p>
+    </div>
+    <div class="fp-ui-alert fp-ui-alert--warning" role="alert">
+      <div class="fp-ui-alert__title">Warning</div>
+      <p>Resource allocation approaching threshold.</p>
+    </div>
+    <div class="fp-ui-alert fp-ui-alert--error" role="alert">
+      <div class="fp-ui-alert__title">Error</div>
+      <p>Connection to external service failed. Auto-retrying.</p>
+    </div>
+  </div>
+
+  <!--
+    USAGE:
+    <div class="fp-ui-alert fp-ui-alert--info" role="alert">
+      <div class="fp-ui-alert__title">Title</div>
+      <p>Message</p>
+    </div>
+
+    VARIANTS: --info, --success, --warning, --error
+  -->
+
+</body>
+</html>

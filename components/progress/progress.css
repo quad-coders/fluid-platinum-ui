@@ -1,0 +1,39 @@
+/* ========================================
+   PROGRESS BAR — With glow effect
+   ======================================== */
+.fp-ui-progress {
+  width: 100%;
+  height: 6px;
+  background: var(--fp-ui-color-bg-glass-strong);
+  border-radius: var(--fp-ui-radius-full);
+  overflow: hidden;
+  border: 1px solid var(--fp-ui-color-border-default);
+}
+
+.fp-ui-progress__bar {
+  height: 100%;
+  border-radius: var(--fp-ui-radius-full);
+  background: linear-gradient(90deg, var(--fp-ui-color-accent-500), var(--fp-ui-color-accent-400));
+  box-shadow: 0 0 10px rgba(0, 212, 245, 0.3);
+  transition: width var(--fp-ui-transition-slow);
+}
+
+/* Variants */
+.fp-ui-progress--success .fp-ui-progress__bar {
+  background: linear-gradient(90deg, var(--fp-ui-color-success-600), var(--fp-ui-color-success-400));
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
+}
+
+.fp-ui-progress--warning .fp-ui-progress__bar {
+  background: linear-gradient(90deg, var(--fp-ui-color-warning-600), var(--fp-ui-color-warning-400));
+  box-shadow: 0 0 10px rgba(255, 171, 0, 0.3);
+}
+
+.fp-ui-progress--error .fp-ui-progress__bar {
+  background: linear-gradient(90deg, var(--fp-ui-color-error-600), var(--fp-ui-color-error-400));
+  box-shadow: 0 0 10px rgba(255, 23, 68, 0.3);
+}
+
+/* Sizes */
+.fp-ui-progress--sm { height: 3px; }
+.fp-ui-progress--lg { height: 10px; }

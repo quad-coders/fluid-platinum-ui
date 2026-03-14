@@ -1,0 +1,22 @@
+/* ========================================
+   CONTAINER — Max-width wrapper with responsive padding
+   ======================================== */
+.fp-ui-container {
+  width: 100%;
+  max-width: var(--fp-ui-container-max-w);
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  padding-inline-start: var(--fp-ui-spacing-6);
+  padding-inline-end: var(--fp-ui-spacing-6);
+}
+.fp-ui-container--sm { max-width: 640px; }
+.fp-ui-container--md { max-width: 768px; }
+.fp-ui-container--lg { max-width: 1024px; }
+.fp-ui-container--xl { max-width: 1280px; }
+
+@media (width <= 768px) {
+  .fp-ui-container {
+    padding-inline-start: var(--fp-ui-spacing-4);
+    padding-inline-end: var(--fp-ui-spacing-4);
+  }
+}

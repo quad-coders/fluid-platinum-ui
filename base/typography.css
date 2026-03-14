@@ -1,0 +1,88 @@
+/* ========================================
+   TYPOGRAPHY
+   Heading classes, text utilities, holographic and glow effects.
+   ======================================== */
+.fp-ui-h1 {
+  font-size: var(--fp-ui-font-size-7xl);
+  font-weight: var(--fp-ui-font-weight-hairline);
+  line-height: var(--fp-ui-line-height-none);
+  letter-spacing: -0.05em;
+}
+
+.fp-ui-h2 {
+  font-size: var(--fp-ui-font-size-4xl);
+  font-weight: var(--fp-ui-font-weight-thin);
+  line-height: var(--fp-ui-line-height-tight);
+  letter-spacing: -0.03em;
+}
+
+.fp-ui-h3 {
+  font-size: var(--fp-ui-font-size-2xl);
+  font-weight: var(--fp-ui-font-weight-light);
+  line-height: var(--fp-ui-line-height-snug);
+  letter-spacing: -0.02em;
+}
+
+.fp-ui-h4 {
+  font-size: var(--fp-ui-font-size-lg);
+  font-weight: var(--fp-ui-font-weight-normal);
+  line-height: var(--fp-ui-line-height-snug);
+}
+
+.fp-ui-text-sm { font-size: var(--fp-ui-font-size-sm); }
+.fp-ui-text-xs { font-size: var(--fp-ui-font-size-xs); }
+.fp-ui-text-secondary { color: var(--fp-ui-color-text-secondary); }
+
+.fp-ui-text-lead {
+  font-size: var(--fp-ui-font-size-xl);
+  font-weight: var(--fp-ui-font-weight-light);
+  color: var(--fp-ui-color-text-secondary);
+  line-height: var(--fp-ui-line-height-relaxed);
+}
+
+/* Holographic gradient text */
+.fp-ui-text-holo {
+  background: linear-gradient(
+    135deg,
+    var(--fp-ui-color-accent-300),
+    var(--fp-ui-color-accent-500),
+    var(--fp-ui-color-violet-400),
+    var(--fp-ui-color-rose-400),
+    var(--fp-ui-color-accent-300)
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fp-shimmer 8s ease-in-out infinite;
+}
+
+/* background shorthand resets background-clip, so text clipping must be re-declared */
+[data-theme="light"] .fp-ui-text-holo {
+  background: linear-gradient(
+    135deg,
+    var(--fp-ui-color-accent-600),
+    var(--fp-ui-color-accent-700),
+    var(--fp-ui-color-violet-600),
+    var(--fp-ui-color-rose-500),
+    var(--fp-ui-color-accent-600)
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Glow text */
+.fp-ui-text-glow {
+  color: var(--fp-ui-color-accent-400);
+  text-shadow:
+    0 0 10px rgba(0, 212, 245, 0.4),
+    0 0 40px rgba(0, 212, 245, 0.15);
+}
+
+[data-theme="light"] .fp-ui-text-glow {
+  color: var(--fp-ui-color-accent-600);
+  text-shadow:
+    0 0 10px rgba(0, 184, 217, 0.2),
+    0 0 40px rgba(0, 184, 217, 0.08);
+}

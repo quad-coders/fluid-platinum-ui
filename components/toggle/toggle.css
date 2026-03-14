@@ -1,0 +1,85 @@
+/* ========================================
+   TOGGLE — CSS-only switch via checkbox
+   Usage: <label class="fp-ui-toggle">
+            <input type="checkbox">
+            <span class="fp-ui-toggle__track"></span>
+            Label
+          </label>
+   ======================================== */
+.fp-ui-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fp-ui-spacing-3);
+  font-size: var(--fp-ui-font-size-sm);
+  color: var(--fp-ui-color-text-secondary);
+  cursor: pointer;
+  min-height: var(--fp-ui-touch-min);
+  touch-action: manipulation;
+}
+
+.fp-ui-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.fp-ui-toggle__track {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: var(--fp-ui-color-bg-glass-strong);
+  border: 1px solid var(--fp-ui-color-border-default);
+  border-radius: var(--fp-ui-radius-full);
+  transition: background var(--fp-ui-transition-base), border-color var(--fp-ui-transition-base), box-shadow var(--fp-ui-transition-base);
+  flex-shrink: 0;
+}
+
+/* Thumb: 18px inside 24px track, 2px inset, travels 20px when checked */
+.fp-ui-toggle__track::after {
+  content: '';
+  position: absolute;
+  inset-block-start: 2px;
+  inset-inline-start: 2px;
+  width: 18px;
+  height: 18px;
+  background: var(--fp-ui-color-text-secondary);
+  border-radius: 50%;
+  transition: transform var(--fp-ui-transition-base), background var(--fp-ui-transition-base), box-shadow var(--fp-ui-transition-base);
+}
+
+/* Hover (before checked so specificity ascends) */
+.fp-ui-toggle:hover .fp-ui-toggle__track {
+  border-color: var(--fp-ui-color-border-strong);
+}
+
+.fp-ui-toggle:hover {
+  color: var(--fp-ui-color-text-primary);
+}
+
+/* Focus */
+.fp-ui-toggle input:focus-visible + .fp-ui-toggle__track {
+  outline: 2px solid var(--fp-ui-color-focus);
+  outline-offset: 2px;
+}
+
+/* Checked state */
+.fp-ui-toggle input:checked + .fp-ui-toggle__track {
+  background: rgba(0, 212, 245, 0.08);
+  border-color: rgba(0, 212, 245, 0.3);
+  box-shadow: 0 0 12px rgba(0, 212, 245, 0.15);
+}
+
+.fp-ui-toggle input:checked + .fp-ui-toggle__track::after {
+  transform: translateX(20px);
+  background: var(--fp-ui-color-accent-400);
+  box-shadow: 0 0 8px rgba(0, 212, 245, 0.4);
+}
+
+[data-theme="light"] .fp-ui-toggle input:checked + .fp-ui-toggle__track {
+  border-color: rgba(0, 184, 217, 0.4);
+}
+
+[data-theme="light"] .fp-ui-toggle input:checked + .fp-ui-toggle__track::after {
+  background: var(--fp-ui-color-accent-600);
+}

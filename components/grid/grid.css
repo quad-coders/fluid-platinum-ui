@@ -1,0 +1,41 @@
+/* ========================================
+   GRID & STACK — Layout utilities
+   ======================================== */
+
+/* Stack — vertical flex with gap */
+.fp-ui-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fp-ui-spacing-4);
+}
+.fp-ui-stack--sm { gap: var(--fp-ui-spacing-2); }
+.fp-ui-stack--lg { gap: var(--fp-ui-spacing-8); }
+
+/* Row — horizontal flex with gap */
+.fp-ui-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fp-ui-spacing-4);
+  align-items: center;
+}
+.fp-ui-row--sm { gap: var(--fp-ui-spacing-2); }
+.fp-ui-row--lg { gap: var(--fp-ui-spacing-8); }
+.fp-ui-row--stretch { align-items: stretch; }
+
+/* Grid — auto-fit responsive grid */
+.fp-ui-grid {
+  display: grid;
+  gap: var(--fp-ui-spacing-6);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.fp-ui-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.fp-ui-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.fp-ui-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (width <= 768px) {
+  .fp-ui-grid--2,
+  .fp-ui-grid--3,
+  .fp-ui-grid--4 {
+    grid-template-columns: 1fr;
+  }
+}

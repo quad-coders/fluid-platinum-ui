@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card — Fluid Platinum UI</title>
+  <link rel="stylesheet" href="../../index.css">
+</head>
+<body style="padding: 2rem;">
+
+  <h1 class="fp-ui-h2">Card</h1>
+  <p class="fp-ui-text-lead">Glass surface with header, body, and footer sections. Hover lifts and intensifies glow.</p>
+
+  <hr class="fp-ui-divider">
+
+  <div class="fp-ui-grid fp-ui-grid--2" style="margin-top: 1rem;">
+
+    <!-- Full card -->
+    <div class="fp-ui-card">
+      <div class="fp-ui-card__header">
+        <h3 class="fp-ui-h4">Card Title</h3>
+      </div>
+      <div class="fp-ui-card__body">
+        <p class="fp-ui-text-sm fp-ui-text-secondary">Glass surfaces with blur backdrop. Hover to see the glow intensify and the card lift.</p>
+      </div>
+      <div class="fp-ui-card__footer fp-ui-flex-row fp-ui-gap-4 fp-ui-justify-end">
+        <button class="fp-ui-btn fp-ui-btn--ghost fp-ui-btn--sm">Cancel</button>
+        <button class="fp-ui-btn fp-ui-btn--primary fp-ui-btn--sm">Confirm</button>
+      </div>
+    </div>
+
+    <!-- Body-only card -->
+    <div class="fp-ui-card">
+      <div class="fp-ui-card__body">
+        <div class="fp-ui-flex-row fp-ui-justify-between fp-ui-items-center" style="margin-bottom: 1rem;">
+          <h3 class="fp-ui-h4">Status</h3>
+          <span class="fp-ui-badge fp-ui-badge--success">Online</span>
+        </div>
+        <p class="fp-ui-text-sm fp-ui-text-secondary">Header and footer are optional. A body-only card works just as well.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!--
+    USAGE:
+    <div class="fp-ui-card">
+      <div class="fp-ui-card__header">...</div>
+      <div class="fp-ui-card__body">...</div>
+      <div class="fp-ui-card__footer">...</div>
+    </div>
+
+    Header and footer are optional.
+  -->
+
+</body>
+</html>

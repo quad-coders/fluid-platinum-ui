@@ -1,0 +1,159 @@
+/* ========================================
+   BUTTON — Breathing glow + touch-ready
+   Variants: primary, secondary, ghost, outline
+   Sizes: sm, default, lg (all meet 44px min touch target)
+   ======================================== */
+.fp-ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fp-ui-spacing-2);
+  padding: var(--fp-ui-btn-padding-y) var(--fp-ui-btn-padding-x);
+  min-height: var(--fp-ui-btn-min-h);
+  font-size: var(--fp-ui-font-size-sm);
+  font-weight: var(--fp-ui-font-weight-medium);
+  line-height: var(--fp-ui-line-height-normal);
+  border-radius: var(--fp-ui-btn-radius);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: transform var(--fp-ui-transition-base), box-shadow var(--fp-ui-transition-base), background var(--fp-ui-transition-base), border-color var(--fp-ui-transition-base);
+
+  /* Prevent double-tap zoom on mobile */
+  touch-action: manipulation;
+}
+
+.fp-ui-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+/* Primary — glow grows on hover, shrinks on press */
+.fp-ui-btn--primary {
+  background: linear-gradient(135deg, rgba(26, 224, 255, 0.05), rgba(0, 184, 217, 0.05));
+  color: var(--fp-ui-color-accent-300);
+  font-weight: var(--fp-ui-font-weight-bold);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid var(--fp-ui-color-border-strong);
+  box-shadow:
+    0 0 15px rgba(0, 212, 245, 0.2),
+    0 0 30px rgba(0, 212, 245, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .fp-ui-btn--primary {
+  color: var(--fp-ui-color-accent-700);
+  background: linear-gradient(135deg, rgba(0, 184, 217, 0.08), rgba(0, 144, 170, 0.08));
+  border-color: rgba(0, 184, 217, 0.35);
+  text-shadow: 0 0 8px rgba(0, 144, 170, 0.3);
+}
+
+.fp-ui-btn--primary:hover:not(:disabled) {
+  border-color: var(--fp-ui-color-accent-400);
+  animation: fp-breathe 2s ease-in-out infinite;
+}
+
+.fp-ui-btn--primary:active:not(:disabled) {
+  animation: none;
+  transform: scale(0.96);
+  box-shadow:
+    0 0 15px rgba(0, 212, 245, 0.4),
+    0 0 40px rgba(0, 212, 245, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Secondary — frosted glass */
+.fp-ui-btn--secondary {
+  background: var(--fp-ui-color-bg-glass);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  color: var(--fp-ui-color-text-primary);
+  border: 1px solid var(--fp-ui-color-border-strong);
+}
+
+.fp-ui-btn--secondary:hover:not(:disabled) {
+  background: var(--fp-ui-color-bg-glass-hover);
+  border-color: var(--fp-ui-color-border-glow);
+  box-shadow:
+    0 0 20px rgba(0, 212, 245, 0.15),
+    0 0 50px rgba(0, 212, 245, 0.05);
+}
+
+.fp-ui-btn--secondary:active:not(:disabled) {
+  background: var(--fp-ui-color-bg-glass-strong);
+  border-color: var(--fp-ui-color-border-glow);
+  transform: scale(0.97);
+}
+
+/* Ghost */
+.fp-ui-btn--ghost {
+  background: var(--fp-ui-color-bg-glass);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid var(--fp-ui-color-border-default);
+  color: var(--fp-ui-color-text-secondary);
+}
+
+.fp-ui-btn--ghost:hover:not(:disabled) {
+  color: var(--fp-ui-color-text-primary);
+  background: var(--fp-ui-color-bg-tertiary);
+}
+
+.fp-ui-btn--ghost:active:not(:disabled) {
+  background: var(--fp-ui-color-bg-glass-hover);
+  transform: scale(0.97);
+}
+
+/* Outline — glowing border */
+.fp-ui-btn--outline {
+  background: var(--fp-ui-color-bg-glass);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  color: var(--fp-ui-color-accent-400);
+  border: 1px solid rgba(0, 212, 245, 0.25);
+}
+
+[data-theme="light"] .fp-ui-btn--outline {
+  color: var(--fp-ui-color-accent-600);
+  border-color: rgba(0, 184, 217, 0.3);
+}
+
+.fp-ui-btn--outline:hover:not(:disabled) {
+  border-color: var(--fp-ui-color-accent-400);
+  background: rgba(0, 212, 245, 0.03);
+  box-shadow:
+    0 0 20px rgba(0, 212, 245, 0.2),
+    0 0 50px rgba(0, 212, 245, 0.08),
+    inset 0 0 20px rgba(0, 212, 245, 0.03);
+}
+
+.fp-ui-btn--outline:active:not(:disabled) {
+  background: rgba(0, 212, 245, 0.08);
+  transform: scale(0.97);
+}
+
+/* Button sizes — all meet 44px min touch target */
+.fp-ui-btn--sm {
+  padding: var(--fp-ui-spacing-2) var(--fp-ui-spacing-5);
+  min-height: var(--fp-ui-touch-min);
+  font-size: var(--fp-ui-font-size-xs);
+  border-radius: var(--fp-ui-radius-md);
+}
+
+.fp-ui-btn--lg {
+  padding: var(--fp-ui-spacing-4) var(--fp-ui-spacing-10);
+  min-height: var(--fp-ui-btn-min-h-lg);
+  font-size: var(--fp-ui-font-size-base);
+  border-radius: var(--fp-ui-radius-xl);
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .fp-ui-btn--primary,
+  .fp-ui-btn--secondary,
+  .fp-ui-btn--ghost,
+  .fp-ui-btn--outline {
+    background: var(--fp-ui-color-bg-secondary);
+  }
+}

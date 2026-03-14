@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid & Stack — Fluid Platinum UI</title>
+  <link rel="stylesheet" href="../../index.css">
+</head>
+<body style="padding: 2rem;">
+
+  <h1 class="fp-ui-h2">Grid & Stack</h1>
+  <p class="fp-ui-text-lead">Layout primitives for responsive grids and flex stacking.</p>
+
+  <hr class="fp-ui-divider">
+
+  <!-- Grid -->
+  <h2 class="fp-ui-h4" style="margin-top: 1rem;">Grid (auto-fit)</h2>
+  <div class="fp-ui-grid" style="margin-top: 1rem;">
+    <div class="fp-ui-card"><div class="fp-ui-card__body">Auto 1</div></div>
+    <div class="fp-ui-card"><div class="fp-ui-card__body">Auto 2</div></div>
+    <div class="fp-ui-card"><div class="fp-ui-card__body">Auto 3</div></div>
+  </div>
+
+  <h2 class="fp-ui-h4" style="margin-top: 2rem;">Grid (fixed 3 columns)</h2>
+  <div class="fp-ui-grid fp-ui-grid--3" style="margin-top: 1rem;">
+    <div class="fp-ui-card"><div class="fp-ui-card__body">Col 1</div></div>
+    <div class="fp-ui-card"><div class="fp-ui-card__body">Col 2</div></div>
+    <div class="fp-ui-card"><div class="fp-ui-card__body">Col 3</div></div>
+  </div>
+
+  <!-- Stack & Row -->
+  <h2 class="fp-ui-h4" style="margin-top: 2rem;">Stack (vertical)</h2>
+  <div class="fp-ui-stack" style="margin-top: 1rem;">
+    <div class="fp-ui-card"><div class="fp-ui-card__body">Item 1</div></div>
+    <div class="fp-ui-card"><div class="fp-ui-card__body">Item 2</div></div>
+    <div class="fp-ui-card"><div class="fp-ui-card__body">Item 3</div></div>
+  </div>
+
+  <h2 class="fp-ui-h4" style="margin-top: 2rem;">Row (horizontal)</h2>
+  <div class="fp-ui-row" style="margin-top: 1rem;">
+    <button class="fp-ui-btn fp-ui-btn--primary">Action 1</button>
+    <button class="fp-ui-btn fp-ui-btn--secondary">Action 2</button>
+    <button class="fp-ui-btn fp-ui-btn--ghost">Action 3</button>
+  </div>
+
+  <!--
+    USAGE:
+    <div class="fp-ui-grid">Auto-fit responsive grid</div>
+    <div class="fp-ui-grid fp-ui-grid--3">Fixed 3-column</div>
+    <div class="fp-ui-stack">Vertical flex with gap</div>
+    <div class="fp-ui-row">Horizontal flex with gap</div>
+
+    GAP SIZES: default, --sm, --lg. Row also supports --stretch.
+    Fixed grids collapse to single column on mobile.
+  -->
+
+</body>
+</html>

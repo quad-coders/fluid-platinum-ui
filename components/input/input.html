@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input — Fluid Platinum UI</title>
+  <link rel="stylesheet" href="../../index.css">
+</head>
+<body style="padding: 2rem;">
+
+  <h1 class="fp-ui-h2">Input</h1>
+  <p class="fp-ui-text-lead">Form fields with glass styling. Works on input, textarea, and select elements.</p>
+
+  <hr class="fp-ui-divider">
+
+  <div class="fp-ui-flex-col fp-ui-gap-6" style="max-width: 480px; margin-top: 1rem;">
+
+    <!-- Text input with hint -->
+    <div class="fp-ui-field">
+      <label class="fp-ui-label" for="name">Full Name</label>
+      <input class="fp-ui-input" id="name" type="text" placeholder="Enter your name">
+      <span class="fp-ui-field__hint">Helper text goes here.</span>
+    </div>
+
+    <!-- Error state -->
+    <div class="fp-ui-field">
+      <label class="fp-ui-label" for="email">Email (error)</label>
+      <input class="fp-ui-input fp-ui-input--error" id="email" type="email" value="not-an-email" aria-describedby="email-err" aria-invalid="true">
+      <span class="fp-ui-field__error" id="email-err">Please enter a valid email address.</span>
+    </div>
+
+    <!-- Textarea -->
+    <div class="fp-ui-field">
+      <label class="fp-ui-label" for="bio">Bio (textarea)</label>
+      <textarea class="fp-ui-input" id="bio" placeholder="Tell us about yourself..."></textarea>
+    </div>
+
+    <!-- Select -->
+    <div class="fp-ui-field">
+      <label class="fp-ui-label" for="region">Region (select)</label>
+      <select class="fp-ui-input" id="region">
+        <option value="" disabled selected>Select a region</option>
+        <option value="na">North America</option>
+        <option value="eu">Europe</option>
+        <option value="ap">Asia Pacific</option>
+      </select>
+    </div>
+
+    <!-- Checkbox & Radio -->
+    <fieldset style="border: none;">
+      <legend class="fp-ui-label">Checkboxes</legend>
+      <div class="fp-ui-flex-col fp-ui-gap-2" style="margin-top: 0.5rem;">
+        <label class="fp-ui-check"><input type="checkbox" checked> Email notifications</label>
+        <label class="fp-ui-check"><input type="checkbox"> Push notifications</label>
+      </div>
+    </fieldset>
+
+    <fieldset style="border: none;">
+      <legend class="fp-ui-label">Radio buttons</legend>
+      <div class="fp-ui-flex-col fp-ui-gap-2" style="margin-top: 0.5rem;">
+        <label class="fp-ui-check"><input type="radio" name="plan" checked> Free</label>
+        <label class="fp-ui-check"><input type="radio" name="plan"> Pro</label>
+      </div>
+    </fieldset>
+
+  </div>
+
+  <!--
+    USAGE:
+    <div class="fp-ui-field">
+      <label class="fp-ui-label" for="x">Label</label>
+      <input class="fp-ui-input" id="x" placeholder="Placeholder">
+      <span class="fp-ui-field__hint">Helper text</span>
+    </div>
+
+    ERROR: Add fp-ui-input--error to input, use fp-ui-field__error for message
+    CHECKBOX/RADIO: <label class="fp-ui-check"><input type="checkbox"> Label</label>
+  -->
+
+</body>
+</html>

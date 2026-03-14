@@ -1,0 +1,96 @@
+/* ========================================
+   MODAL — CSS-only dialog via :target
+   Usage: <div class="fp-ui-modal" id="my-modal">
+            <div class="fp-ui-modal__panel">...</div>
+          </div>
+   Open:  <a href="#my-modal">Open</a>
+   Close: <a href="#!" class="fp-ui-modal__close">X</a>
+   ======================================== */
+.fp-ui-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--fp-ui-spacing-6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--fp-ui-transition-base), visibility var(--fp-ui-transition-base);
+}
+
+.fp-ui-modal:target {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Backdrop */
+.fp-ui-modal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Panel — needs more opaque bg since it sits on a dark overlay */
+.fp-ui-modal__panel {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--fp-ui-color-bg-primary);
+  border: 1px solid var(--fp-ui-color-border-strong);
+  border-radius: var(--fp-ui-radius-xl);
+  box-shadow: var(--fp-ui-shadow-lg);
+  padding: var(--fp-ui-spacing-8);
+}
+
+/* Close button */
+.fp-ui-modal__close {
+  position: absolute;
+  inset-block-start: var(--fp-ui-spacing-4);
+  inset-inline-end: var(--fp-ui-spacing-4);
+  width: var(--fp-ui-touch-min);
+  height: var(--fp-ui-touch-min);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fp-ui-color-text-tertiary);
+  font-size: var(--fp-ui-font-size-lg);
+  border-radius: var(--fp-ui-radius-md);
+  transition: color var(--fp-ui-transition-fast), background var(--fp-ui-transition-fast);
+}
+
+.fp-ui-modal__close:hover {
+  color: var(--fp-ui-color-text-primary);
+  background: var(--fp-ui-color-bg-glass-hover);
+}
+
+.fp-ui-modal__title {
+  font-size: var(--fp-ui-font-size-xl);
+  font-weight: var(--fp-ui-font-weight-light);
+  margin-block-end: var(--fp-ui-spacing-4);
+  padding-inline-end: var(--fp-ui-spacing-10);
+}
+
+.fp-ui-modal__body {
+  color: var(--fp-ui-color-text-secondary);
+  font-size: var(--fp-ui-font-size-sm);
+}
+
+.fp-ui-modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--fp-ui-spacing-3);
+  margin-block-start: var(--fp-ui-spacing-8);
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .fp-ui-modal::before {
+    background: rgba(0, 0, 0, 0.8);
+  }
+}

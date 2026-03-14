@@ -1,0 +1,120 @@
+/* ========================================
+   INPUT — Touch-friendly glass fields
+   Includes: input, textarea, select, field wrapper, label,
+   hints, error states, checkbox, radio.
+   ======================================== */
+.fp-ui-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fp-ui-spacing-2);
+}
+
+.fp-ui-label {
+  font-size: var(--fp-ui-font-size-sm);
+  color: var(--fp-ui-color-text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.fp-ui-input {
+  width: 100%;
+  padding: var(--fp-ui-input-padding-y) var(--fp-ui-input-padding-x);
+  min-height: var(--fp-ui-input-min-h);
+  font-size: var(--fp-ui-font-size-base); /* 16px prevents iOS zoom */
+  background: var(--fp-ui-input-bg);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid var(--fp-ui-input-border);
+  border-radius: var(--fp-ui-input-radius);
+  color: var(--fp-ui-color-text-primary);
+  transition: border-color var(--fp-ui-transition-base), background var(--fp-ui-transition-base), box-shadow var(--fp-ui-transition-base);
+  touch-action: manipulation;
+}
+
+.fp-ui-input::placeholder {
+  color: var(--fp-ui-color-text-tertiary);
+}
+
+.fp-ui-input:hover {
+  border-color: var(--fp-ui-color-border-strong);
+  background: var(--fp-ui-color-bg-glass-hover);
+}
+
+.fp-ui-input:focus {
+  outline: 2px solid transparent; /* visible in Windows High Contrast Mode */
+  border-color: var(--fp-ui-color-accent-400);
+  background: var(--fp-ui-color-bg-glass-hover);
+  box-shadow:
+    0 0 15px rgba(0, 212, 245, 0.2),
+    0 0 40px rgba(0, 212, 245, 0.08),
+    inset 0 0 15px rgba(0, 212, 245, 0.03);
+}
+
+.fp-ui-input--error {
+  border-color: rgba(255, 23, 68, 0.4);
+}
+
+.fp-ui-input--error:focus {
+  border-color: var(--fp-ui-color-error-500);
+  box-shadow:
+    0 0 15px rgba(255, 23, 68, 0.2),
+    0 0 40px rgba(255, 23, 68, 0.08),
+    inset 0 0 15px rgba(255, 23, 68, 0.03);
+}
+
+.fp-ui-field__error {
+  font-size: var(--fp-ui-font-size-xs);
+  color: var(--fp-ui-color-error-400);
+}
+
+.fp-ui-field__hint {
+  font-size: var(--fp-ui-font-size-xs);
+  color: var(--fp-ui-color-text-tertiary);
+}
+
+textarea.fp-ui-input {
+  resize: vertical;
+  min-height: 6rem;
+}
+
+select.fp-ui-input {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236478a0' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--fp-ui-spacing-4) center;
+  padding-inline-end: var(--fp-ui-spacing-10);
+}
+
+/* Checkbox & Radio — 44px touch target via padding */
+.fp-ui-check {
+  display: flex;
+  align-items: center;
+  gap: var(--fp-ui-spacing-3);
+  font-size: var(--fp-ui-font-size-sm);
+  cursor: pointer;
+  color: var(--fp-ui-color-text-secondary);
+  transition: color var(--fp-ui-transition-fast);
+  min-height: var(--fp-ui-touch-min);
+  padding: var(--fp-ui-spacing-1) 0;
+  touch-action: manipulation;
+}
+
+.fp-ui-check:hover {
+  color: var(--fp-ui-color-text-primary);
+}
+
+.fp-ui-check input[type="checkbox"],
+.fp-ui-check input[type="radio"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--fp-ui-color-accent-500);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .fp-ui-input {
+    background: var(--fp-ui-color-bg-secondary);
+  }
+}

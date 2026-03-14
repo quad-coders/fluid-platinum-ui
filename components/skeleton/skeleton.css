@@ -1,0 +1,50 @@
+/* ========================================
+   SKELETON — Shimmer loading placeholder
+   Uses fp-shimmer keyframe from animations.css.
+   ======================================== */
+.fp-ui-skeleton {
+  display: block;
+  background: linear-gradient(
+    90deg,
+    var(--fp-ui-color-bg-glass-strong) 25%,
+    var(--fp-ui-color-bg-glass) 50%,
+    var(--fp-ui-color-bg-glass-strong) 75%
+  );
+  background-size: 200% 100%;
+  animation: fp-shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--fp-ui-radius-md);
+  border: 1px solid var(--fp-ui-color-border-default);
+  min-height: 1rem;
+}
+
+.fp-ui-skeleton--text {
+  height: 0.875rem;
+  margin-block-end: var(--fp-ui-spacing-2);
+}
+
+.fp-ui-skeleton--text:last-child {
+  width: 60%;
+}
+
+.fp-ui-skeleton--heading {
+  height: 1.5rem;
+  width: 40%;
+  margin-block-end: var(--fp-ui-spacing-4);
+}
+
+.fp-ui-skeleton--avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.fp-ui-skeleton--btn {
+  height: var(--fp-ui-touch-min);
+  width: 120px;
+  border-radius: var(--fp-ui-btn-radius);
+}
+
+.fp-ui-skeleton--card {
+  height: 200px;
+  border-radius: var(--fp-ui-radius-xl);
+}

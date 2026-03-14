@@ -1,0 +1,38 @@
+/* ========================================
+   Fluid Platinum UI — Design System
+   Import order: tokens → base → components → utilities
+   ======================================== */
+
+/* Tokens (load first — everything depends on these) */
+@import 'tokens/primitives.css';
+@import 'tokens/semantic.css';
+@import 'tokens/components.css';
+
+/* Base (reset, typography, animations) */
+@import 'base/reset.css';
+@import 'base/animations.css';
+@import 'base/typography.css';
+
+/* Components */
+@import 'components/container/container.css';
+@import 'components/grid/grid.css';
+@import 'components/navbar/navbar.css';
+@import 'components/breadcrumb/breadcrumb.css';
+@import 'components/button/button.css';
+@import 'components/input/input.css';
+@import 'components/toggle/toggle.css';
+@import 'components/card/card.css';
+@import 'components/table/table.css';
+@import 'components/badge/badge.css';
+@import 'components/alert/alert.css';
+@import 'components/tabs/tabs.css';
+@import 'components/modal/modal.css';
+@import 'components/avatar/avatar.css';
+@import 'components/progress/progress.css';
+@import 'components/tooltip/tooltip.css';
+@import 'components/skeleton/skeleton.css';
+@import 'components/divider/divider.css';
+
+/* Utilities (load last — highest specificity intent) */
+@import 'utilities/layout.css';
+@import 'utilities/sr-only.css';

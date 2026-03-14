@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skeleton — Fluid Platinum UI</title>
+  <link rel="stylesheet" href="../../index.css">
+</head>
+<body style="padding: 2rem;">
+
+  <h1 class="fp-ui-h2">Skeleton</h1>
+  <p class="fp-ui-text-lead">Shimmer loading placeholders for content that hasn't loaded yet.</p>
+
+  <hr class="fp-ui-divider">
+
+  <div class="fp-ui-grid fp-ui-grid--2" style="margin-top: 1rem;">
+
+    <!-- Card with skeleton content -->
+    <div class="fp-ui-card">
+      <div class="fp-ui-card__body fp-ui-flex-col fp-ui-gap-3">
+        <div class="fp-ui-flex-row fp-ui-items-center fp-ui-gap-3">
+          <div class="fp-ui-skeleton fp-ui-skeleton--avatar"></div>
+          <div style="flex: 1;">
+            <div class="fp-ui-skeleton fp-ui-skeleton--heading"></div>
+          </div>
+        </div>
+        <div class="fp-ui-skeleton fp-ui-skeleton--text"></div>
+        <div class="fp-ui-skeleton fp-ui-skeleton--text"></div>
+        <div class="fp-ui-skeleton fp-ui-skeleton--text" style="width: 60%;"></div>
+        <div class="fp-ui-skeleton fp-ui-skeleton--btn" style="margin-top: 0.5rem;"></div>
+      </div>
+    </div>
+
+    <!-- Full card skeleton -->
+    <div class="fp-ui-skeleton fp-ui-skeleton--card"></div>
+
+  </div>
+
+  <!--
+    USAGE:
+    <div class="fp-ui-skeleton fp-ui-skeleton--heading"></div>
+    <div class="fp-ui-skeleton fp-ui-skeleton--text"></div>
+    <div class="fp-ui-skeleton fp-ui-skeleton--avatar"></div>
+    <div class="fp-ui-skeleton fp-ui-skeleton--btn"></div>
+    <div class="fp-ui-skeleton fp-ui-skeleton--card"></div>
+  -->
+
+</body>
+</html>

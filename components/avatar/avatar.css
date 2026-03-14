@@ -1,0 +1,56 @@
+/* ========================================
+   AVATAR — Circular user image or initials
+   ======================================== */
+.fp-ui-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--fp-ui-color-bg-glass);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid var(--fp-ui-color-border-default);
+  font-size: var(--fp-ui-font-size-sm);
+  font-weight: var(--fp-ui-font-weight-medium);
+  color: var(--fp-ui-color-accent-400);
+  flex-shrink: 0;
+}
+
+.fp-ui-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.fp-ui-avatar--sm { width: 28px; height: 28px; font-size: var(--fp-ui-font-size-xs); }
+.fp-ui-avatar--lg { width: 56px; height: 56px; font-size: var(--fp-ui-font-size-lg); }
+.fp-ui-avatar--xl { width: 80px; height: 80px; font-size: var(--fp-ui-font-size-2xl); }
+
+/* Glow ring on hover */
+.fp-ui-avatar:hover {
+  border-color: rgba(0, 212, 245, 0.3);
+  box-shadow: 0 0 12px rgba(0, 212, 245, 0.15);
+}
+
+/* Avatar group — overlapping */
+.fp-ui-avatar-group {
+  display: flex;
+}
+
+.fp-ui-avatar-group .fp-ui-avatar {
+  margin-inline-start: -8px;
+  border: 2px solid var(--fp-ui-color-bg-primary);
+}
+
+.fp-ui-avatar-group .fp-ui-avatar:first-child {
+  margin-inline-start: 0;
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .fp-ui-avatar {
+    background: var(--fp-ui-color-bg-secondary);
+  }
+}

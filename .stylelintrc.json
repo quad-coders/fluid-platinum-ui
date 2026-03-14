@@ -1,0 +1,25 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "custom-property-pattern": "^fp-ui-.+",
+    "selector-class-pattern": "^(fp-ui-|preview-|swatch|stat-|theme-).+",
+    "no-descending-specificity": true,
+    "property-no-vendor-prefix": [true, {
+      "ignoreProperties": ["backdrop-filter", "text-fill-color", "background-clip", "tap-highlight-color", "text-size-adjust", "font-smoothing", "appearance"]
+    }],
+    "value-no-vendor-prefix": [true, {
+      "ignoreValues": ["blur"]
+    }],
+    "declaration-block-single-line-max-declarations": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "shorthand-property-no-redundant-values": null,
+    "alpha-value-notation": "number",
+    "color-function-notation": "legacy",
+    "import-notation": "string"
+  },
+  "ignoreFiles": [
+    "dist/**",
+    "docs/**",
+    "node_modules/**"
+  ]
+}

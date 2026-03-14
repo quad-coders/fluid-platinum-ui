@@ -1,0 +1,81 @@
+/* ========================================
+   TABS — CSS-only via hidden radio buttons
+   Usage:
+     <div class="fp-ui-tabs">
+       <input type="radio" name="tabs" id="tab1" class="fp-ui-tabs__radio" checked>
+       <label for="tab1" class="fp-ui-tabs__tab">Tab 1</label>
+       <input type="radio" name="tabs" id="tab2" class="fp-ui-tabs__radio">
+       <label for="tab2" class="fp-ui-tabs__tab">Tab 2</label>
+       <div class="fp-ui-tabs__panel">Content 1</div>
+       <div class="fp-ui-tabs__panel">Content 2</div>
+     </div>
+   ======================================== */
+.fp-ui-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  border-block-end: 1px solid var(--fp-ui-color-border-default);
+}
+
+.fp-ui-tabs__radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.fp-ui-tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--fp-ui-spacing-3) var(--fp-ui-spacing-5);
+  min-height: var(--fp-ui-touch-min);
+  font-size: var(--fp-ui-font-size-sm);
+  font-weight: var(--fp-ui-font-weight-medium);
+  color: var(--fp-ui-color-text-secondary);
+  cursor: pointer;
+  border-block-end: 2px solid transparent;
+  margin-block-end: -1px;
+  transition: color var(--fp-ui-transition-fast), border-color var(--fp-ui-transition-fast);
+  touch-action: manipulation;
+}
+
+.fp-ui-tabs__tab:hover {
+  color: var(--fp-ui-color-text-primary);
+}
+
+.fp-ui-tabs__radio:focus-visible + .fp-ui-tabs__tab {
+  outline: 2px solid var(--fp-ui-color-focus);
+  outline-offset: -2px;
+}
+
+.fp-ui-tabs__radio:checked + .fp-ui-tabs__tab {
+  color: var(--fp-ui-color-accent-400);
+  border-block-end-color: var(--fp-ui-color-accent-400);
+  text-shadow: 0 0 12px rgba(0, 212, 245, 0.3);
+}
+
+[data-theme="light"] .fp-ui-tabs__radio:checked + .fp-ui-tabs__tab {
+  color: var(--fp-ui-color-accent-700);
+  border-block-end-color: var(--fp-ui-color-accent-700);
+  text-shadow: 0 0 8px rgba(0, 144, 170, 0.2);
+}
+
+/* Panels: show only the one matching the checked radio */
+.fp-ui-tabs__panel {
+  display: none;
+  width: 100%;
+  padding: var(--fp-ui-spacing-6) 0;
+  order: 99;
+  color: var(--fp-ui-color-text-secondary);
+  font-size: var(--fp-ui-font-size-sm);
+}
+
+.fp-ui-tabs__radio:checked ~ .fp-ui-tabs__panel {
+  display: none;
+}
+
+/* Show the matching panel. Hard limit: 5 tabs (CSS nth-of-type constraint) */
+.fp-ui-tabs__radio:nth-of-type(1):checked ~ .fp-ui-tabs__panel:nth-of-type(1) { display: block; }
+.fp-ui-tabs__radio:nth-of-type(2):checked ~ .fp-ui-tabs__panel:nth-of-type(2) { display: block; }
+.fp-ui-tabs__radio:nth-of-type(3):checked ~ .fp-ui-tabs__panel:nth-of-type(3) { display: block; }
+.fp-ui-tabs__radio:nth-of-type(4):checked ~ .fp-ui-tabs__panel:nth-of-type(4) { display: block; }
+.fp-ui-tabs__radio:nth-of-type(5):checked ~ .fp-ui-tabs__panel:nth-of-type(5) { display: block; }

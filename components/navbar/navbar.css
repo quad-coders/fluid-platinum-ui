@@ -1,0 +1,69 @@
+/* ========================================
+   NAVBAR — Top navigation bar
+   ======================================== */
+.fp-ui-navbar {
+  display: flex;
+  align-items: center;
+  gap: var(--fp-ui-spacing-6);
+  padding: var(--fp-ui-spacing-3) var(--fp-ui-spacing-6);
+  min-height: 56px;
+  background: var(--fp-ui-color-bg-glass);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-block-end: 1px solid var(--fp-ui-color-border-default);
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 100;
+}
+
+.fp-ui-navbar__brand {
+  font-size: var(--fp-ui-font-size-lg);
+  font-weight: var(--fp-ui-font-weight-medium);
+  color: var(--fp-ui-color-text-primary);
+  margin-inline-end: auto;
+}
+
+.fp-ui-navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--fp-ui-spacing-1);
+}
+
+.fp-ui-navbar__link {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--fp-ui-spacing-2) var(--fp-ui-spacing-4);
+  min-height: var(--fp-ui-touch-min);
+  font-size: var(--fp-ui-font-size-sm);
+  color: var(--fp-ui-color-text-secondary);
+  border-radius: var(--fp-ui-radius-md);
+  transition: color var(--fp-ui-transition-fast), background var(--fp-ui-transition-fast);
+  touch-action: manipulation;
+}
+
+.fp-ui-navbar__link:hover,
+.fp-ui-navbar__link:active {
+  color: var(--fp-ui-color-text-primary);
+  background: var(--fp-ui-color-bg-glass-hover);
+}
+
+.fp-ui-navbar__link--active {
+  color: var(--fp-ui-color-accent-400);
+}
+
+[data-theme="light"] .fp-ui-navbar__link--active {
+  color: var(--fp-ui-color-accent-700);
+}
+
+@media (width <= 768px) {
+  .fp-ui-navbar {
+    padding: var(--fp-ui-spacing-3) var(--fp-ui-spacing-4);
+  }
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .fp-ui-navbar {
+    background: var(--fp-ui-color-bg-secondary);
+  }
+}

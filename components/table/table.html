@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table — Fluid Platinum UI</title>
+  <link rel="stylesheet" href="../../index.css">
+</head>
+<body style="padding: 2rem;">
+
+  <h1 class="fp-ui-h2">Table</h1>
+  <p class="fp-ui-text-lead">Glass data table with optional striped rows and hover highlighting.</p>
+
+  <hr class="fp-ui-divider">
+
+  <div class="fp-ui-table-wrap" style="margin-top: 1rem;">
+    <table class="fp-ui-table fp-ui-table--striped fp-ui-table--hover" aria-label="Service status">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Status</th>
+          <th scope="col">Latency</th>
+          <th scope="col">Region</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>api-gateway</td>
+          <td><span class="fp-ui-badge fp-ui-badge--success">Online</span></td>
+          <td>12ms</td>
+          <td>US-East</td>
+        </tr>
+        <tr>
+          <td>auth-service</td>
+          <td><span class="fp-ui-badge fp-ui-badge--success">Online</span></td>
+          <td>8ms</td>
+          <td>US-West</td>
+        </tr>
+        <tr>
+          <td>ml-pipeline</td>
+          <td><span class="fp-ui-badge fp-ui-badge--warning">Pending</span></td>
+          <td>145ms</td>
+          <td>EU-Central</td>
+        </tr>
+        <tr>
+          <td>cache-layer</td>
+          <td><span class="fp-ui-badge fp-ui-badge--error">Critical</span></td>
+          <td>—</td>
+          <td>AP-South</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!--
+    USAGE:
+    <div class="fp-ui-table-wrap">
+      <table class="fp-ui-table fp-ui-table--striped fp-ui-table--hover">
+        <thead><tr><th scope="col">Col</th></tr></thead>
+        <tbody><tr><td>Data</td></tr></tbody>
+      </table>
+    </div>
+
+    fp-ui-table-wrap adds glass border/blur. --striped and --hover are optional.
+  -->
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+/* ========================================
+   LAYOUT UTILITIES
+   Common layout patterns to reduce inline styles.
+   ======================================== */
+
+/* Flex direction */
+.fp-ui-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.fp-ui-flex-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Alignment */
+.fp-ui-items-center {
+  align-items: center;
+}
+
+.fp-ui-justify-between {
+  justify-content: space-between;
+}
+
+.fp-ui-justify-end {
+  justify-content: flex-end;
+}
+
+.fp-ui-text-center {
+  text-align: center;
+}
+
+/* Gap */
+.fp-ui-gap-2 {
+  gap: var(--fp-ui-spacing-2);
+}
+
+.fp-ui-gap-3 {
+  gap: var(--fp-ui-spacing-3);
+}
+
+.fp-ui-gap-4 {
+  gap: var(--fp-ui-spacing-4);
+}
+
+.fp-ui-gap-5 {
+  gap: var(--fp-ui-spacing-5);
+}
+
+.fp-ui-gap-6 {
+  gap: var(--fp-ui-spacing-6);
+}
+
+/* Width */
+.fp-ui-w-full {
+  width: 100%;
+}

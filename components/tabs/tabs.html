@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs — Fluid Platinum UI</title>
+  <link rel="stylesheet" href="../../index.css">
+</head>
+<body style="padding: 2rem;">
+
+  <h1 class="fp-ui-h2">Tabs</h1>
+  <p class="fp-ui-text-lead">CSS-only tabs via hidden radio buttons. Up to 5 tabs supported.</p>
+
+  <hr class="fp-ui-divider">
+
+  <div class="fp-ui-tabs" style="margin-top: 1rem;">
+    <input type="radio" name="demo-tabs" id="tab1" class="fp-ui-tabs__radio" checked>
+    <label for="tab1" class="fp-ui-tabs__tab">Overview</label>
+    <input type="radio" name="demo-tabs" id="tab2" class="fp-ui-tabs__radio">
+    <label for="tab2" class="fp-ui-tabs__tab">Analytics</label>
+    <input type="radio" name="demo-tabs" id="tab3" class="fp-ui-tabs__radio">
+    <label for="tab3" class="fp-ui-tabs__tab">Settings</label>
+    <div class="fp-ui-tabs__panel">Overview content — system health, recent activity, quick actions.</div>
+    <div class="fp-ui-tabs__panel">Analytics content — charts, metrics, trends over time.</div>
+    <div class="fp-ui-tabs__panel">Settings content — preferences, notifications, account details.</div>
+  </div>
+
+  <!--
+    USAGE:
+    <div class="fp-ui-tabs">
+      <input type="radio" name="tabs" id="t1" class="fp-ui-tabs__radio" checked>
+      <label for="t1" class="fp-ui-tabs__tab">Tab 1</label>
+      <input type="radio" name="tabs" id="t2" class="fp-ui-tabs__radio">
+      <label for="t2" class="fp-ui-tabs__tab">Tab 2</label>
+      <div class="fp-ui-tabs__panel">Content 1</div>
+      <div class="fp-ui-tabs__panel">Content 2</div>
+    </div>
+
+    Order matters: all radio+label pairs first, then all panels in matching order.
+    Use a unique name per tab group. Max 5 tabs (CSS nth-of-type constraint).
+  -->
+
+</body>
+</html>
