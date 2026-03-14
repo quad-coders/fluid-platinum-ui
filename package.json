@@ -1,6 +1,6 @@
 {
   "name": "fluid-platinum-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A futuristic glassmorphic design system built with pure HTML & CSS",
   "main": "dist/index.css",
   "style": "dist/index.css",
